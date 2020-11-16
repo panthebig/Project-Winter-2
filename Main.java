@@ -8,20 +8,14 @@ import java.util.Scanner;
 public class Main {
 
 
-        enum QuestionType{
-            Food,
-            Geography,
-            Ath
-        }
-
     public static void main(String[] args) {
 
-        String[] category = { "Food" , "Geograph" ,"athe"};
+        String[] category = { "Food" , "Technology" ,"Science"};
         ArrayList<String[]> outStream = new ArrayList<String[]>();
         Scanner input = new Scanner(System.in);
-        String inputCategory = input.nextLine();
         System.out.println("Give Category");
-        File text = new File("Food.txt");
+        String inputCategory = input.nextLine();
+        File text = new File("Question.txt");
 
         Scanner scanner = null;
         try {
