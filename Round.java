@@ -5,7 +5,7 @@ public class  Round {
 
     private  int I,rand;
     private boolean X;
-    public static String[] Cat = {"Food","Technology","Science","TESTTEST"};
+    public static String[] Cat = {"Food","Sports","Music","TESTTEST"};
 
     public Round(){
 
@@ -33,10 +33,10 @@ public class  Round {
 
 
         for(I=0;I<4;I++) { //To Game kanei 4 erwthseis gurou i kai tuxaias katigorias
-            rand=ThreadLocalRandom.current().nextInt(0, 3); //[0,2]
+            rand=ThreadLocalRandom.current().nextInt(0, 2); //[0,1]                             // 0 kai 1 piuanes
 
             if (i == 1) {
-                //System.out.println("And The Category you will be playing this Question is :-\n"+Cat[rand]);         // random category?????????
+                System.out.println("And The Category you will be playing this Question is :-\n"+Cat[rand]);
                 X = RoundCorrectAnswer();
                 if (X) {
                     Stats[0] = Stats[0] + 1000;
@@ -47,7 +47,7 @@ public class  Round {
                 }
 
             } else if (i == 2) {
-                //System.out.println("And The Category you will be playing this Question is :-\n"+Cat[rand]);
+                System.out.println("And The Category you will be playing this Question is :-\n"+Cat[rand]);
 
                 System.out.println("How much Do You want to bet?\n");
 
@@ -71,13 +71,13 @@ public class  Round {
 
     public boolean RoundCorrectAnswer(){
         Question CQ = new Question();
-        return CQ.QuestionsAndAnswer();
+        return CQ.QuestionsAndAnswer(Cat[rand]);
 
     }
 
     public boolean RoundBetting(){
         Question CQ = new Question();
-        return  CQ.QuestionsAndAnswer();
+        return  CQ.QuestionsAndAnswer(Cat[rand]);
 
     }
 
