@@ -5,8 +5,7 @@ public class Main {
 
         GUI graphics = new GUI();
         graphics.startGUI();
-        Game NewGame = new Game();
-        NewGame.GameStart();
+
 
 
 

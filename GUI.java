@@ -5,11 +5,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import static java.lang.Thread.sleep;
+
 
 public class GUI extends JFrame{
 
 
-    private JFrame frame;
+    private JButton One;
+    private JButton Two;
+
+    public static JFrame frame;
     private JPanel TopGamePanel;
     private JPanel CenterGamePanel;
     private JPanel QuestionPanel;
@@ -27,9 +32,11 @@ public class GUI extends JFrame{
     private static JLabel TheAnswersLabel2;
     private static JLabel TheAnswersLabel3;
     private static JLabel TheAnswersLabel4;
+    public static char character;
+    public static boolean flag = true;
 
     private JTextField Question;
-    private int NumberOfPlayers;
+    private static int NumberOfPlayers;
 
     public GUI(){
 
@@ -39,41 +46,22 @@ public class GUI extends JFrame{
         frame.setVisible(false);
         frame.setLayout(new BorderLayout());
         frame.setFocusable(true);
-        frame.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                super.keyTyped(e);
-                switch (e.getKeyChar()) {
-                    case 'q':
-                        System.out.println("Player 1 - Answer A");
-                        break;
-                    case 'w':
-                        System.out.println("Player 1 - Answer B");
-                        break;
-                    case 'e':
-                        System.out.println("Player 1 - Answer C");
-                        break;
-                    case 'r':
-                        System.out.println("Player 1 - Answer D");
-                        break;
-                }
-            }
-        });
+
 
         TopGamePanel = new JPanel();
         TopGamePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         TopGamePanel.setBackground(Color.orange);
-        //TopGamePanel.setLayout(new BorderLayout());
         frame.add(TopGamePanel, BorderLayout.PAGE_START);
 
 
         StartButton = new JButton("Start");
+        StartButton.setFocusable(false);
         StartButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Object[] players = {"One", "Two"};
 
-                int n = JOptionPane.showOptionDialog(null,
+                int n = JOptionPane.showOptionDialog(frame,
                         "How many players will be playing?",
                         "Amount of players",
                         JOptionPane.DEFAULT_OPTION,
@@ -92,8 +80,10 @@ public class GUI extends JFrame{
                     NumberOfPlayers=2;
                 }//can easily add more players!
             }
+
         });
         TopGamePanel.add(StartButton);
+
 
         HighScores = new JButton("Get The High Scores");
         HighScores.addActionListener(new ActionListener() {
@@ -171,6 +161,9 @@ public class GUI extends JFrame{
 
     void startGUI(){
         frame.setVisible(true);
+        Game NewGame = new Game();
+        NewGame.GameStart();
+
     }
 
 
@@ -185,6 +178,57 @@ public class GUI extends JFrame{
 
 
     }
+
+    public static char getChar() {
+
+        flag = true;
+        while(flag){
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            frame.addKeyListener(new KeyAdapter() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                        super.keyTyped(e);
+                        switch (e.getKeyChar()) {
+                            case 'q':
+                                character = 'q';
+                                //System.out.println("Player 1 - Answer A");
+                                flag = false;
+                                break;
+                            case 'w':
+                                character = 'w';
+                                //System.out.println("Player 1 - Answer B");
+                                flag = false;
+                                break;
+                            case 'e':
+                                character = 'e';
+                                //System.out.println("Player 1 - Answer C");
+                                flag = false;
+                                break;
+                            case 'r':
+                                character = 'r';
+                                //System.out.println("Player 1 - Answer D");
+                                flag = false;
+                                break;
+                        }
+                    }
+
+            });
+
+        }
+        System.out.println(character);
+        return character;
+    }
+
+    public static int numberOfPlayers(){
+        return NumberOfPlayers;
+    }
+
+
+
 /*
     public static void updateAnswers(String[] Questions){
         System.out.println(Questions[1]);

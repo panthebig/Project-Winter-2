@@ -65,8 +65,10 @@ public class Question {
 
 
 
-        Scanner inp = new Scanner(System.in);
-        Answer = inp.nextLine();
+        //Scanner inp = new Scanner(System.in);
+        //Answer = inp.nextLine();
+        Answer = Character.toString(GUI.getChar());
+        System.out.println(Answer);
 
         if(Answer.equals("q")){
             Answer = CompleteQestion[2];

@@ -10,6 +10,7 @@ public class Game {
     int RoundPoints[];
     static ArrayList<String[]> outStream = new ArrayList<String[]>();
 
+
     public Game(){
         this.AmountOfPlayers=0;
     }
@@ -21,9 +22,25 @@ public class Game {
      * And keeping track of the number of questions answered correctly by each player!
      */
     public void GameStart(){
+
+        boolean flag = true;
+
         System.out.println("How Many Players?\n");
-        Scanner inp = new Scanner(System.in);
-        AmountOfPlayers = inp.nextInt();
+        //Scanner inp = new Scanner(System.in);
+        //AmountOfPlayers = inp.nextInt();
+        while (flag){
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            AmountOfPlayers = GUI.numberOfPlayers();
+            if(AmountOfPlayers != 0){
+                flag = false;
+            }
+        }
+
+        System.out.println(AmountOfPlayers);
         TXT();
 
         if(AmountOfPlayers==1){
