@@ -8,9 +8,20 @@ public class GUI extends JFrame{
     private JPanel TopGamePanel;
     private JPanel CenterGamePanel;
     private JPanel QuestionPanel;
+    private JPanel CategoryPanel;
+    private JPanel AnsewrsPanel0;
+    private JPanel AnsewrsPanel1;
+    private JPanel AnsewrsPanel2;
+    private JPanel AnsewrsPanel3;
+    private JPanel AnsewrsPanel4;
     private JButton StartButton;
     private JButton HighScores;
     private JLabel TheQuestionLabel;
+    private JLabel TheCategoryLabel;
+    private JLabel TheAnswersLabel1;
+    private JLabel TheAnswersLabel2;
+    private JLabel TheAnswersLabel3;
+    private JLabel TheAnswersLabel4;
 
     private JTextField Question;
     private int NumberOfPlayers;
@@ -26,7 +37,6 @@ public class GUI extends JFrame{
         TopGamePanel = new JPanel();
         TopGamePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         TopGamePanel.setBackground(Color.orange);
-        //TopGamePanel.setLayout(new BorderLayout());
         frame.add(TopGamePanel, BorderLayout.PAGE_START);
 
 
@@ -67,17 +77,65 @@ public class GUI extends JFrame{
         TopGamePanel.add(HighScores);
 
         CenterGamePanel = new JPanel();
-        CenterGamePanel.setLayout(new BorderLayout());
-        CenterGamePanel.setBackground(Color.GRAY);
+        CenterGamePanel.setLayout(new GridLayout(7,1));
+        CenterGamePanel.setBackground(Color.DARK_GRAY);
         frame.add(CenterGamePanel,BorderLayout.CENTER);
+
+        CategoryPanel = new JPanel();
+        CategoryPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
+        CategoryPanel.setBackground(Color.GRAY);
+        CenterGamePanel.add(CategoryPanel);
+
+        TheCategoryLabel = new JLabel("Category : ");
+        CategoryPanel.add(TheCategoryLabel);
 
         QuestionPanel = new JPanel();
         QuestionPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
         QuestionPanel.setBackground(Color.lightGray);
-        CenterGamePanel.add(QuestionPanel,BorderLayout.PAGE_START);
+        CenterGamePanel.add(QuestionPanel);
 
         TheQuestionLabel = new JLabel("Question : ");
         QuestionPanel.add(TheQuestionLabel);
+
+        AnsewrsPanel0 = new JPanel();
+        AnsewrsPanel0.setBackground(Color.lightGray);
+        CenterGamePanel.add(AnsewrsPanel0);
+
+        AnsewrsPanel1 = new JPanel();
+        AnsewrsPanel1.setLayout(new FlowLayout(FlowLayout.LEADING));
+        AnsewrsPanel1.setBackground(Color.lightGray);
+        CenterGamePanel.add(AnsewrsPanel1);
+
+        TheAnswersLabel1 = new JLabel("TEST1");
+        AnsewrsPanel1.add(TheAnswersLabel1);
+
+        AnsewrsPanel2 = new JPanel();
+        AnsewrsPanel2.setLayout(new FlowLayout(FlowLayout.LEADING));
+        AnsewrsPanel2.setBackground(Color.lightGray);
+        CenterGamePanel.add(AnsewrsPanel2);
+
+        TheAnswersLabel2 = new JLabel("TEST2");
+        AnsewrsPanel2.add(TheAnswersLabel2);
+
+        AnsewrsPanel3 = new JPanel();
+        AnsewrsPanel3.setLayout(new FlowLayout(FlowLayout.LEADING));
+        AnsewrsPanel3.setBackground(Color.lightGray);
+        CenterGamePanel.add(AnsewrsPanel3);
+
+        TheAnswersLabel3 = new JLabel("TEST3");
+        AnsewrsPanel3.add(TheAnswersLabel3);
+
+        AnsewrsPanel4 = new JPanel();
+        AnsewrsPanel4.setLayout(new FlowLayout(FlowLayout.LEADING));
+        AnsewrsPanel4.setBackground(Color.lightGray);
+        CenterGamePanel.add(AnsewrsPanel4);
+
+        TheAnswersLabel4 = new JLabel("TEST4");
+        AnsewrsPanel4.add(TheAnswersLabel4);
+
+
+
+
 
 
 
