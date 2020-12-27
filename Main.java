@@ -1,11 +1,14 @@
 public class Main {
     public static void main(String[] args){
 
-        public static void main(String[] args) {
-            System.out.println("Hello, let's play Buzz!\n");
-        }
+        System.out.println("Hello, let's play Buzz!\n");
+
+        GUI graphics = new GUI();
+        graphics.startGUI();
         Game NewGame = new Game();
         NewGame.GameStart();
+
+
 
     }
 }

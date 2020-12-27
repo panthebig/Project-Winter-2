@@ -1,17 +1,26 @@
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class  Round extends Game{
+public class  Round{
 
     private  int I,rand;
     private boolean X;
-    public static String[] Cat = {"Food","Technology","Science","TESTTEST"};
+
+    public static String[] Cat = {"Food","Science","Music","Technology","Films"};
+
 
     public Round(){
 
     }
 
-
+    /***
+     * RoundStart is responsible for starting each round ,deciding a random category for each question
+     * And calling the respective function with the question category as parameter.
+     * @param i This parameter represents the type of round the player(s) has/have to play for the next 4 questions
+     * @param AmountOfPlayers depending on this parameter the method decides which if case to follow
+     * @return Returns an integer array which keeps track of the score and questions answered correctly by the player(s)
+     *         During the round
+     */
     public int[] RoundStart(int i,int AmountOfPlayers) { //Trexei o guros tupou i
 
         int[] Stats;
@@ -33,11 +42,13 @@ public class  Round extends Game{
 
 
         for(I=0;I<4;I++) { //To Game kanei 4 erwthseis gurou i kai tuxaias katigorias
-            rand=ThreadLocalRandom.current().nextInt(0, 3); //[0,2]
+
+            rand=ThreadLocalRandom.current().nextInt(0, 5);  //[0,4]
+
 
             if (i == 1) {
                 System.out.println("And The Category you will be playing this Question is :-\n"+Cat[rand]);
-                X = RoundCorrectAnswer(Cat[rand]);
+                X = RoundAnswer();
                 if (X) {
                     Stats[0] = Stats[0] + 1000;
                     Stats[1]++;
@@ -54,7 +65,7 @@ public class  Round extends Game{
                 Scanner input = new Scanner(System.in);
                 int am = input.nextInt();
 
-                X = RoundBetting(Cat[rand]);
+                X = RoundAnswer();
                 if (X) {
                     Stats[0] = Stats[0] + am;
                     Stats[1]++;
@@ -69,17 +80,16 @@ public class  Round extends Game{
         return Stats;
     }
 
-    public boolean RoundCorrectAnswer(String X){
+    /***
+     * The following Function creates a Question object and calls the respective method
+     * @return returns a boolean value weather the player(s) answered correctly or not
+     */
+    public boolean RoundAnswer(){
         Question CQ = new Question();
-        return CQ.QuestionsAndAnswer(X);
+        return CQ.QuestionsAndAnswer(Cat[rand]);
 
     }
 
-    public boolean RoundBetting(String X){
-        Question CQ = new Question();
-        return  CQ.QuestionsAndAnswer(X);
-
-    }
 
 
 }

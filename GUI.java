@@ -2,8 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 
 public class GUI extends JFrame{
+
+
     private JFrame frame;
     private JPanel TopGamePanel;
     private JPanel CenterGamePanel;
@@ -16,12 +21,12 @@ public class GUI extends JFrame{
     private JPanel AnsewrsPanel4;
     private JButton StartButton;
     private JButton HighScores;
-    private JLabel TheQuestionLabel;
-    private JLabel TheCategoryLabel;
-    private JLabel TheAnswersLabel1;
-    private JLabel TheAnswersLabel2;
-    private JLabel TheAnswersLabel3;
-    private JLabel TheAnswersLabel4;
+    private static JLabel TheQuestionLabel;
+    private static JLabel TheCategoryLabel;
+    private static JLabel TheAnswersLabel1;
+    private static JLabel TheAnswersLabel2;
+    private static JLabel TheAnswersLabel3;
+    private static JLabel TheAnswersLabel4;
 
     private JTextField Question;
     private int NumberOfPlayers;
@@ -33,10 +38,32 @@ public class GUI extends JFrame{
         frame.setSize(500,400);
         frame.setVisible(false);
         frame.setLayout(new BorderLayout());
+        frame.setFocusable(true);
+        frame.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                switch (e.getKeyChar()) {
+                    case 'q':
+                        System.out.println("Player 1 - Answer A");
+                        break;
+                    case 'w':
+                        System.out.println("Player 1 - Answer B");
+                        break;
+                    case 'e':
+                        System.out.println("Player 1 - Answer C");
+                        break;
+                    case 'r':
+                        System.out.println("Player 1 - Answer D");
+                        break;
+                }
+            }
+        });
 
         TopGamePanel = new JPanel();
         TopGamePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         TopGamePanel.setBackground(Color.orange);
+        //TopGamePanel.setLayout(new BorderLayout());
         frame.add(TopGamePanel, BorderLayout.PAGE_START);
 
 
@@ -58,6 +85,7 @@ public class GUI extends JFrame{
                 if(n==0){
                     System.out.println(players[n] + " player will be playing");
                     NumberOfPlayers=1;
+
                 }
                 else {
                     System.out.println(players[n] + " players will be playing");
@@ -135,20 +163,6 @@ public class GUI extends JFrame{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     private void AmountOfPlayersButton(){
@@ -158,5 +172,24 @@ public class GUI extends JFrame{
     void startGUI(){
         frame.setVisible(true);
     }
+
+
+
+    public static void updateQuestion(String[] Questions){
+        TheCategoryLabel.setText("Category : " + Questions[0]);
+        TheQuestionLabel.setText("Question : " + Questions[1]);
+        TheAnswersLabel1.setText("Q : " + Questions[2]);
+        TheAnswersLabel2.setText("W : " + Questions[3]);
+        TheAnswersLabel3.setText("E : " + Questions[4]);
+        TheAnswersLabel4.setText("R : " + Questions[5]);
+
+
+    }
+/*
+    public static void updateAnswers(String[] Questions){
+        System.out.println(Questions[1]);
+        label1.setText(Questions[1]);
+    }
+*/
 
 }
