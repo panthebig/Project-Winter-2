@@ -1,11 +1,13 @@
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class  Round extends Game{
+public class  Round{
 
     private  int I,rand;
     private boolean X;
-    public static String[] Cat = {"Food","Technology","Science","TESTTEST"};
+    public static String[] Rounds = {"Correct Answer","Betting"};
+    public static String[] Cat = {"Food","Science","Music","Technology","Films"};
+
 
     public Round(){
 
@@ -38,13 +40,16 @@ public class  Round extends Game{
             System.out.println("The Round is -BETTING-\n");
         }
 
+        GUI.updateRound(Rounds,i);
 
         for(I=0;I<4;I++) { //To Game kanei 4 erwthseis gurou i kai tuxaias katigorias
-            rand=ThreadLocalRandom.current().nextInt(0, 3); //[0,2]
+
+            rand=ThreadLocalRandom.current().nextInt(0, 5);  //[0,4]
+
 
             if (i == 1) {
                 System.out.println("And The Category you will be playing this Question is :-\n"+Cat[rand]);
-                X = RoundAnswer(Cat[rand]);
+                X = RoundAnswer();
                 if (X) {
                     Stats[0] = Stats[0] + 1000;
                     Stats[1]++;
@@ -58,10 +63,25 @@ public class  Round extends Game{
 
                 System.out.println("How much Do You want to bet?\n");
 
-                Scanner input = new Scanner(System.in);
-                int am = input.nextInt();
+                //Scanner input = new Scanner(System.in);
+                //int am = input.nextInt();
+                GUI.updateBet();
+                int am=0;
+                boolean flag = true;
+                while (flag){
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    am = GUI.TheAmoundofBetting();
+                    if(am != 0){
+                        flag = false;
+                    }
+                }
+                System.out.println("YOUR BET : " + am);
 
-                X = RoundAnswer(Cat[rand]);
+                X = RoundAnswer();
                 if (X) {
                     Stats[0] = Stats[0] + am;
                     Stats[1]++;
@@ -78,12 +98,11 @@ public class  Round extends Game{
 
     /***
      * The following Function creates a Question object and calls the respective method
-     * @param X represents the category of the question that will later be chosen by the QuestionAndAnswer
      * @return returns a boolean value weather the player(s) answered correctly or not
      */
-    public boolean RoundAnswer(String X){
+    public boolean RoundAnswer(){
         Question CQ = new Question();
-        return CQ.QuestionsAndAnswer(X);
+        return CQ.QuestionsAndAnswer(Cat[rand]);
 
     }
 
