@@ -1,0 +1,84 @@
+Food	Lady Finger is a variety of which fruit?	Banana	Apple	Pineapple	Apricot	Banana
+Food	Which country grows the most corn?	Russia	Germany	China	USA	USA
+Food	How many calories are in one gram of fat?	4	10	9	3	9
+Food	How many cups of tea are drunk in the UK on average every day?	10 Million	600 Thousand	165 Million	95 Million	165 Million
+Food	Who introduced lemons to America?	Christopher Columbus	Marco Polo	Vasco da Gama	John Cabot	Christopher Columbus
+Food	How many kernels will you find on an average ear of corn?	600	800	1200	550	800
+Food	Meyer, Eureka, and Lisbon are varieties of which fruit?	Apple	Watermelon	Melon	Lemon	Lemon
+Food	Which country grows the most mangoes?	Iran	Iraq	India	Australia	India
+Food	What year did the Milky bar cowboy first appear?	1968	1962	1994	2001	1962
+Food	Which food was used as money by early North American settlers?	Chocolate	Pizza	Beans	Corn	Corn
+Food	Which country is the origin of the cocktail Mojito?	Cuba	Italy	Spain	Dominican Republic	Cuba
+Food	What is the most famous Mexican beer?	Bohemia	Corona	Pacifico	Sol 2	Corona
+Food	What percentage of a mushroom is water?	35%	77%	95%	90%	90%
+Food	When sas iced tea was invented?	1955	1904	1978	1898	1904
+Food	Which meat is used in Glamorgan sausages?	Pork	Beef	None, they are made from cheese	Lamb	None, they are made from cheese
+Food	What percentage of all oranges grown are used to produce juice?	35%	50%	70%	85%	85%
+Food	From which sea-creature is 'tomalley’ obtained?	Lobster	Carp	Alaskan salmon	Cod	Lobster
+Food	What is Ravioli?	Chocolate	Beans	Small pasta with a filling	Vegetable	Small pasta with a filling
+Food	What mixer is gin typically served with?	Lemonade	Orange Juice	 Cherry Juice	Tonic Water	Tonic Water
+Food	How many segments are inside most oranges?	15	10	25	8	10
+Food	Which country produces the most bananas?	USA	Greece	India	China	India
+Science	When a solid changes to a liquid, we say it's melting. What do we call it when a gas changes into a liquid?	Solidification	Vaporization	Liquidation	Condensation	Condensation
+Science	As of October 2008, there are 193 known moons orbiting planets in our Solar System. Discovered on October 10, 1846, Triton is the largest moon of what planet?	Earth	Neptune	Pluto	Mercury	Neptune
+Science	We're all familiar with the mosquito trapped in amber in the movie 'Jurassic Park', but what was that amber made from?	Resin	Sap	Coal	Bark	Resin
+Science	Grains are deeply embedded in the history of human diets, but which one takes the cake for the highest level of worldwide production by weight?	Wheat	Rice	Corn	Potatoes	Corn
+Science	They say that our eyes are the windows to our soul, but what do we call the most attractive, pigmented part of the eye?	Lid	Retina	Pupil	Iris	Iris
+Science	In terms of weather, cirrus, cumulus, and stratus are all different types of what?	Lightning Strikes	Clouds	Rain Patterns	Tornadoes	Clouds
+Science	Sometimes referred to as plant science, plant biology, or phytology, the branch of biology focused on plant life is called what?	Anatomy	Botany	Zoology	Geology	Botany
+Science	Many are partial to one temperature scale over the other, but there is one spot where the two exist in harmony. At what temperature are both the Celsius and Fahrenheit scales the same?	96 degrees	0 degrees	-32 degrees	-40 degrees	-40 degrees
+Science	No, that's not a star - it's the brightest planet in the night sky! Do you know which one it is?	Venus	Mars	Saturn	Jupiter	Venus
+Science	The genetic information held in DNA is responsible for the development, functioning, growth, and reproduction of all known organisms. What do we call a single piece of coiled DNA?	RNA	Chromosome	Backbone	Mitochondrion	Chromosome
+Science	Deserts are diverse landscapes filled with unique plants and wildlife not found anywhere else on Earth, but what hot desert is larger than all the others?	Sahara	Gobi	Kalahari	Nile	Sahara
+Science	These days, people are very conscious of the food they eat, and luckily, there are plenty of methods for ensuring safe consumption. What is the name of the process which involves heating a liquid or food to kill pathogenic bacteria?	Sanitation	Boiling	Detoxification	Pasteurization	Pasteurization
+Science	Punchbowl, Horsetail, Chutes, Cascades, and Block are all different types of what natural water feature?	River	Waterfall	Pool	Lake	Waterfall
+Science	Despite the efforts made by wildlife conservationists, many plants and animal species remain at risk. In biology, what is the term for the death of an entire species?	Rejuvenation	Extinction	Endangerment	Preservation	Extinction
+Science	Variations in hair, eyes, and skin color bring beautiful uniqueness to the human race. What substance do we have to thank for our differing pigments?	Keratin	Melanin	Biotin	Estrogen	Melanin
+Science	Freedom of speech wouldn't exist without the highly-evolved voice box that allows humans to speak their minds. What's another name for our voice box?	Larynx	Trachea	Esophagus	Valve	Larynx
+Science	Disney's Mufasa might appear to be the largest, most mighty big cat in the animal kingdom, but there's another breed even bigger! What is the largest big cat breed in the world?	Puma	Jaguar	Siberian Tiger	Liger	Liger
+Science	Nowadays, when you gaze up at the night sky you're bound to see at least one satellite cruise by, but what was the name of the first satellite to enter space?	Explorer	Sputnik	Challenger	Skylab	Sputnik
+Science	We all know how to flip a switch and turn on a light, but how do we typically measure that electric power?	Joules	Time	Watts	Volts	Watts
+Music	Which country do iconic pop trio A-ha come from?	Spain	Norway	Italy	Sweden	Norway
+Music	Billy Corgan is the lead singer of which alternative rock band?	R.E.M.	Soundgarden	Foo Fighters	The Smashing Pumpkins	The Smashing Pumpkins
+Music	What was Britney Spears’ first single called?	Baby One More Time	Toxic	Gimme More	Oops!...i did it again	Baby One More Time
+Music	Which band sang The Final Countdown?	Bon Jovi	Europe	Last Autumn's Dream	skid row	Europe
+Music	What was David Bowie’s real surname?	Jones	Smith	West	Brown	Jones
+Music	Alissa White-Gluz is the lead singer of which band?	Arch Enemy	Judas Priest	Manowar	Avenged Sevenfold	Arch Enemy
+Music	How many members are there in South Korean mega boyband BTS?	6	7	8	4	7
+Music	Who is the current lead singer of the rock band Skillet?	John Cooper	Steven Tyler	Brian Johnson	Alissa White-Gluz	John Cooper
+Music	What was the name of the original drummer for The Beatles?	Chad Smith	Neil Peart	Pete Best	John Bonham	Pete Best
+Music	In what decade was American jazz trumpeter Miles Davis born?	1920s	1940s	1960s	1990s	1920s
+Music	Rockstar David Howell Evans is better known by what name?	The Edge	The Hammer	Fire	Drum Sticks From Hell	The Edge
+Music	Complete the first line of the Bill Withers hit: “Ain’t no sunshine …”	When you are away	Without you	When she’s gone	My love	When she’s gone
+Music	Will.i.am is best known for performing with which hip hop group?	Run-DMC	Public Enemy	Outkast	The Black Eyed Peas	The Black Eyed Peas
+Music	Which singer has the most UK Number One singles ever?	Elvis Presley	Ed Sheeran	Taylor Swift	Michael Jackson	Elvis Presley
+Music	Which famous rapper married reality TV star Kim Kardashian in 2014?	Eminem	Jay-Z	Kanye West	Drake	Kanye West
+Music	The Rock and Roll Hall of Fame is situated in which US State?	Ohio	California	Washington	Colorado	Ohio
+Technology	The famous computer Deep Blue was created by which company?	IBM	Amazon	Gateway	Oracle	IBM
+Technology	The computer Deep Blue is known for beating a grandmaster in which game?	Checkers	Chess	Monopoly	Snakes and Ladders	Chess
+Technology	Released in 1900, the Brownie was a famous early camera from what company?	Kodak	Polaroid	Canon	Fuji	Kodak
+Technology	In which country did the brand LG originate?	USA	China	Germany	South Korea	South Korea
+Technology	What website was originally known as "Gadabra"?	Google	Facebook	Amazon	Instagram	Amazon
+Technology	What company specializes in GPS technology?	Bose	Garmin	Nintendo	Mozilla	Garmin
+Technology	What video-on-demand service was originally called "Watch Now"?	Hulu	Prime Video	Vudu	Netflix	Netflix
+Technology	In which year did Tim Berners-Lee invent the World Wide Web?	1960	1985	1993	1989	1989
+Technology	On an email, what does "CC" stand for?	Carbon Copy	Course Corrected	Check Core	Can't Complete	Carbon Copy
+Technology	What is the name of the blue bird that is in Twitter's logo?	Freddy	Larry	Manny	Tony	Larry
+Technology	Paypal was spun off from which major company in 2015?	eBay	Microsoft	Amazon	Yahoo!	eBay
+Technology	Tech giant Foxconn is headquartered in which of these countries?	Mexico	Brazil	Denmark	Taiwan	Taiwan
+Technology	The compact disc was originally developed by Philips and which company?	Sony	IBM	Apple	Zenith	Sony
+Technology	What is a type of test to see if a specific network address can be reached?	Trumpet	Dot	Ping	Jam	Ping
+Technology	Which food is slang for poorly-written computer code?	Roast Beef	Rye Bread	Spaghetti	Lasagna	Spaghetti
+Technology	Which of these social media platforms was launched in 2010?	Twitter	Myspace	Facebook	Instagram	Instagram
+Technology	What search engine was originally called "Jerry and David's Guide to the World Wide Web"?	Amazon	AOL	Google	Yahoo!	Yahoo!
+Films	Which actor broke two toes whilst filming The Lord of the Rings: The Two Towers?	Viggo Mortensen	Elijah Wood	Ian McKellen	Orlando Bloom	Viggo Mortensen
+Films	How many films have Al Pacino and Robert De Niro starred in together?	10	6	2	4	4
+Films	The Imitation Game is a biopic based on which twentieth century figure?	Albert Einstein	Nikola Tesla	Alan Turing	Marie Curie	Alan Turing
+Films	What does Tom Hanks compare life to in Forest Gump?	A book	A box of chocolates	A sunny day	A bouquet of flowers	A box of chocolates
+Films	What year was the first Toy Story film released in cinemas?	1995	1999	2001	1992	1995
+Films	Who directed Titanic, Avatar and The Terminator?	Quentin Tarantino	James Cameron	Joss Whedon	Edgar Wright	James Cameron
+Films	Which Oscar-winning actress is the voice of Helen Parr (Elastigirl) in The Incredibles?	Emma Stone	Kate Winslet	Holly Hunter	Julianne Moore	Holly Hunter
+Films	What is the highest-grossing box office film of all time?	Avengers: Endgame	Titanic	Avatar	Jurassic World	Avengers: Endgame
+Films	Which DJ played himself in "American Graffiti"?	Wolfman Jack	David Guetta	Alok	Steve Aoki	Wolfman Jack
+Films	Who tells Thor that Odin is dead in the movie "Thor"?	Jane Foster	Odin	Loki	Hela	Loki
+Films	What is Captain Sparrow's first name in "Pirates of the Caribbean"?	Jack	John	James	Joshua	Jack
