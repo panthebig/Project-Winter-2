@@ -70,7 +70,7 @@ public class  Round{
                 boolean flag = true;
                 while (flag){
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(10);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

@@ -30,7 +30,7 @@ public class Game {
         //AmountOfPlayers = inp.nextInt();
         while (flag){
             try {
-                Thread.sleep(1000);
+                Thread.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -54,6 +54,7 @@ public class Game {
                 RoundPoints=aRound.RoundStart(GetRandomInt(),1);
                 Player1.ScoreCount(RoundPoints);
                 Player1.PrintScore();
+                System.out.println(i);
             }
         }
         else {

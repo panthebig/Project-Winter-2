@@ -85,7 +85,6 @@ public class GUI extends JFrame{
         });
         TopGamePanel.add(StartButton);
 
-
         HighScores = new JButton("Get The High Scores");
         HighScores.addActionListener(new ActionListener() {
             @Override
@@ -239,7 +238,7 @@ public class GUI extends JFrame{
         flag = true;
         while(flag){
             try {
-                Thread.sleep(1000);
+                Thread.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
