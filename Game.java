@@ -30,7 +30,7 @@ public class Game {
         //AmountOfPlayers = inp.nextInt();
         while (flag){
             try {
-                Thread.sleep(1000);
+                Thread.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -51,7 +51,7 @@ public class Game {
             for(i=0;i<4;i++){
 
                 Round aRound =new Round();
-                RoundPoints=aRound.RoundStart(GetRandomInt(),1);
+                RoundPoints=aRound.RoundStart(3,1);
                 Player1.ScoreCount(RoundPoints);
                 Player1.PrintScore();
             }
@@ -68,7 +68,7 @@ public class Game {
      * @return randomNum which is the random number
      */
     public int GetRandomInt(){
-        int randomNum = ThreadLocalRandom.current().nextInt(1, 3); //[1,2]
+        int randomNum = ThreadLocalRandom.current().nextInt(1, 4); //[1,3]
         return randomNum;
     }
 
