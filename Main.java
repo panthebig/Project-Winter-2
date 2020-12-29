@@ -6,8 +6,5 @@ public class Main {
         GUI graphics = new GUI();
         graphics.startGUI();
 
-
-
-
     }
 }

@@ -5,7 +5,7 @@ public class  Round{
 
     private  int I,rand;
     private boolean X;
-
+    public static String[] Rounds = {"Correct Answer","Betting"};
     public static String[] Cat = {"Food","Science","Music","Technology","Films"};
 
 
@@ -40,6 +40,7 @@ public class  Round{
             System.out.println("The Round is -BETTING-\n");
         }
 
+        GUI.updateRound(Rounds,i);
 
         for(I=0;I<4;I++) { //To Game kanei 4 erwthseis gurou i kai tuxaias katigorias
 
@@ -62,8 +63,23 @@ public class  Round{
 
                 System.out.println("How much Do You want to bet?\n");
 
-                Scanner input = new Scanner(System.in);
-                int am = input.nextInt();
+                //Scanner input = new Scanner(System.in);
+                //int am = input.nextInt();
+                GUI.updateBet();
+                int am=0;
+                boolean flag = true;
+                while (flag){
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    am = GUI.TheAmoundofBetting();
+                    if(am != 0){
+                        flag = false;
+                    }
+                }
+                System.out.println("YOUR BET : " + am);
 
                 X = RoundAnswer();
                 if (X) {

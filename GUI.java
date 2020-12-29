@@ -11,31 +11,32 @@ import static java.lang.Thread.sleep;
 public class GUI extends JFrame{
 
 
-    private JButton One;
-    private JButton Two;
-
     public static JFrame frame;
     private JPanel TopGamePanel;
     private JPanel CenterGamePanel;
+    private JPanel RoundTypePanel;
     private JPanel QuestionPanel;
     private JPanel CategoryPanel;
-    private JPanel AnsewrsPanel0;
+    private JPanel BetPanel;
     private JPanel AnsewrsPanel1;
     private JPanel AnsewrsPanel2;
     private JPanel AnsewrsPanel3;
     private JPanel AnsewrsPanel4;
     private JButton StartButton;
     private JButton HighScores;
+    private static JLabel TheRoundTypeLabel;
     private static JLabel TheQuestionLabel;
     private static JLabel TheCategoryLabel;
+    private static JLabel TheBettingLabel;
     private static JLabel TheAnswersLabel1;
     private static JLabel TheAnswersLabel2;
     private static JLabel TheAnswersLabel3;
     private static JLabel TheAnswersLabel4;
+
     public static char character;
     public static boolean flag = true;
-
-    private JTextField Question;
+    public static int CurrentRoundType;
+    public static int GUIBetting;
     private static int NumberOfPlayers;
 
     public GUI(){
@@ -95,9 +96,17 @@ public class GUI extends JFrame{
         TopGamePanel.add(HighScores);
 
         CenterGamePanel = new JPanel();
-        CenterGamePanel.setLayout(new GridLayout(7,1));
+        CenterGamePanel.setLayout(new GridLayout(8,1));
         CenterGamePanel.setBackground(Color.DARK_GRAY);
         frame.add(CenterGamePanel,BorderLayout.CENTER);
+
+        RoundTypePanel = new JPanel();
+        RoundTypePanel.setLayout(new FlowLayout(FlowLayout.LEADING));
+        RoundTypePanel.setBackground(Color.GRAY);
+        CenterGamePanel.add(RoundTypePanel);
+
+        TheRoundTypeLabel = new JLabel("Round Type : ");
+        RoundTypePanel.add(TheRoundTypeLabel);
 
         CategoryPanel = new JPanel();
         CategoryPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
@@ -115,9 +124,12 @@ public class GUI extends JFrame{
         TheQuestionLabel = new JLabel("Question : ");
         QuestionPanel.add(TheQuestionLabel);
 
-        AnsewrsPanel0 = new JPanel();
-        AnsewrsPanel0.setBackground(Color.lightGray);
-        CenterGamePanel.add(AnsewrsPanel0);
+        BetPanel = new JPanel();
+        BetPanel.setBackground(Color.lightGray);
+        CenterGamePanel.add(BetPanel);
+
+        TheBettingLabel = new JLabel();
+        BetPanel.add(TheBettingLabel);
 
         AnsewrsPanel1 = new JPanel();
         AnsewrsPanel1.setLayout(new FlowLayout(FlowLayout.LEADING));
@@ -153,6 +165,7 @@ public class GUI extends JFrame{
 
 
 
+
     }
 
     private void AmountOfPlayersButton(){
@@ -166,7 +179,49 @@ public class GUI extends JFrame{
 
     }
 
+    public static void updateRound(String[] RoundTypes,int CurrentRound){
+        CurrentRound=CurrentRound-1;
+        CurrentRoundType=CurrentRound;
+        TheRoundTypeLabel.setText("Round Type : " + RoundTypes[CurrentRound]);
 
+        if(CurrentRoundType!=1){
+            TheBettingLabel.setText("");
+        }
+
+    }
+
+    public static void updateBet(){
+        if(CurrentRoundType==1){//THIS MEANS THE ROUND IS BETTING
+            Object[] TheBet = {"250", "500", "750", "1000"};
+
+            int n = JOptionPane.showOptionDialog(frame,
+                    "How much do you want to Bet?",
+                    "Betting Amount",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    TheBet,
+                    TheBet[0]);
+
+            if(n==0){
+                GUIBetting=250;
+            }
+            else if(n==1){
+                GUIBetting=500;
+            }
+            else if(n==2){
+                GUIBetting=750;
+            }
+            else{
+                GUIBetting=1000;
+            }
+        }
+
+        if(CurrentRoundType==1){
+            TheBettingLabel.setText("The Betting is : " + GUIBetting);
+        }
+
+    }
 
     public static void updateQuestion(String[] Questions){
         TheCategoryLabel.setText("Category : " + Questions[0]);
@@ -189,32 +244,32 @@ public class GUI extends JFrame{
                 e.printStackTrace();
             }
             frame.addKeyListener(new KeyAdapter() {
-                    @Override
-                    public void keyTyped(KeyEvent e) {
-                        super.keyTyped(e);
-                        switch (e.getKeyChar()) {
-                            case 'q':
-                                character = 'q';
-                                //System.out.println("Player 1 - Answer A");
-                                flag = false;
-                                break;
-                            case 'w':
-                                character = 'w';
-                                //System.out.println("Player 1 - Answer B");
-                                flag = false;
-                                break;
-                            case 'e':
-                                character = 'e';
-                                //System.out.println("Player 1 - Answer C");
-                                flag = false;
-                                break;
-                            case 'r':
-                                character = 'r';
-                                //System.out.println("Player 1 - Answer D");
-                                flag = false;
-                                break;
-                        }
+                @Override
+                public void keyTyped(KeyEvent e) {
+                    super.keyTyped(e);
+                    switch (e.getKeyChar()) {
+                        case 'q':
+                            character = 'q';
+                            //System.out.println("Player 1 - Answer A");
+                            flag = false;
+                            break;
+                        case 'w':
+                            character = 'w';
+                            //System.out.println("Player 1 - Answer B");
+                            flag = false;
+                            break;
+                        case 'e':
+                            character = 'e';
+                            //System.out.println("Player 1 - Answer C");
+                            flag = false;
+                            break;
+                        case 'r':
+                            character = 'r';
+                            //System.out.println("Player 1 - Answer D");
+                            flag = false;
+                            break;
                     }
+                }
 
             });
 
@@ -227,13 +282,10 @@ public class GUI extends JFrame{
         return NumberOfPlayers;
     }
 
-
-
-/*
-    public static void updateAnswers(String[] Questions){
-        System.out.println(Questions[1]);
-        label1.setText(Questions[1]);
+    public static int TheAmoundofBetting(){
+        return GUIBetting;
     }
-*/
+
+
 
 }
