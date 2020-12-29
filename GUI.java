@@ -27,7 +27,7 @@ public class GUI extends JFrame{
     private static JLabel TheRoundTypeLabel;
     private static JLabel TheQuestionLabel;
     private static JLabel TheCategoryLabel;
-    private static JLabel TheBettingLabel;
+    private static JLabel TheUtilityLabel;
     private static JLabel TheAnswersLabel1;
     private static JLabel TheAnswersLabel2;
     private static JLabel TheAnswersLabel3;
@@ -38,6 +38,9 @@ public class GUI extends JFrame{
     public static int CurrentRoundType;
     public static int GUIBetting;
     private static int NumberOfPlayers;
+
+    private static Timer timer;
+    public static int theTime;
 
     public GUI(){
 
@@ -128,8 +131,8 @@ public class GUI extends JFrame{
         BetPanel.setBackground(Color.lightGray);
         CenterGamePanel.add(BetPanel);
 
-        TheBettingLabel = new JLabel();
-        BetPanel.add(TheBettingLabel);
+        TheUtilityLabel = new JLabel();
+        BetPanel.add(TheUtilityLabel);
 
         AnsewrsPanel1 = new JPanel();
         AnsewrsPanel1.setLayout(new FlowLayout(FlowLayout.LEADING));
@@ -184,8 +187,15 @@ public class GUI extends JFrame{
         CurrentRoundType=CurrentRound;
         TheRoundTypeLabel.setText("Round Type : " + RoundTypes[CurrentRound]);
 
-        if(CurrentRoundType!=1){
-            TheBettingLabel.setText("");
+        if(CurrentRoundType==0){//Correct Answer
+            TheUtilityLabel.setText("Choose the correct answer!");
+        }
+        else if(CurrentRoundType==1){
+            TheUtilityLabel.setText("Time to Bet!");
+        }
+        else if(CurrentRoundType==2){//Stopwatch
+            TheUtilityLabel.setText("It's Stopwatch round so be FAST!");
+
         }
 
     }
@@ -218,7 +228,7 @@ public class GUI extends JFrame{
         }
 
         if(CurrentRoundType==1){
-            TheBettingLabel.setText("The Betting is : " + GUIBetting);
+            TheUtilityLabel.setText("The Betting is : " + GUIBetting);
         }
 
     }
@@ -239,7 +249,7 @@ public class GUI extends JFrame{
         flag = true;
         while(flag){
             try {
-                Thread.sleep(1000);
+                Thread.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -274,7 +284,7 @@ public class GUI extends JFrame{
             });
 
         }
-        System.out.println(character);
+        //System.out.println(character);
         return character;
     }
 
@@ -286,6 +296,40 @@ public class GUI extends JFrame{
         return GUIBetting;
     }
 
+    public  static  void StopWatch(){
+        TheUtilityLabel.setText("Starting time : 5 Seconds");
+
+        timer = new Timer(100, new ActionListener() {
+            private int count = 5000;
+
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (count <= 0) {
+                    ((Timer) e.getSource()).stop();
+                } else {
+                    count -= 100;
+                }
+                TheUtilityLabel.setText(Integer.toString(count));
+                theTime=count;
+            }
+
+        });
+        timer.start();
+
+
+    }
+
+    //public static void StartTimer(){
+        //timer.start();
+   // }
+    public static void StopTimer(){
+        timer.stop();
+        JOptionPane.showMessageDialog(frame,
+                "The question has been answered!\n Ready for the next one?",
+                "Inane warning",
+                JOptionPane.WARNING_MESSAGE);
+    }
 
 
 }

@@ -30,7 +30,7 @@ public class Game {
         //AmountOfPlayers = inp.nextInt();
         while (flag){
             try {
-                Thread.sleep(1000);
+                Thread.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -57,8 +57,30 @@ public class Game {
             }
         }
         else {
+            System.out.println("To choose the correct answer use keys 'q w e r' for Player1\n And the keys 'u i o p' for Player2");
+
             Player Player1 = new Player();
             Player Player2 = new Player();
+            int[] RoundPointsPlayer1 = new int[2];
+            int[] RoundPointsPlayer2 = new int[2];
+
+            for(i=0;i<1;i++){
+                Round aRound = new Round();
+                RoundPoints=aRound.RoundStart(GetRandomInt(),2);
+                RoundPointsPlayer1[0]=RoundPoints[0];
+                RoundPointsPlayer1[1]=RoundPoints[1];
+                RoundPointsPlayer2[0]=RoundPoints[2];
+                RoundPointsPlayer2[1]=RoundPoints[3];
+
+                Player1.ScoreCount(RoundPointsPlayer1);
+                Player2.ScoreCount(RoundPointsPlayer2);
+
+
+                Player1.PrintScore();
+                Player2.PrintScore();
+            }
+
+
         }
 
     }
@@ -68,7 +90,7 @@ public class Game {
      * @return randomNum which is the random number
      */
     public int GetRandomInt(){
-        int randomNum = ThreadLocalRandom.current().nextInt(1, 3); //[1,2]
+        int randomNum = ThreadLocalRandom.current().nextInt(1, 4); //[1,3]
         return randomNum;
     }
 
@@ -108,5 +130,6 @@ public class Game {
     public static int getSize(){
         return outStream.size();
     }
+
 
 }

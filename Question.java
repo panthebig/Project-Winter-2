@@ -64,11 +64,10 @@ public class Question {
         //System.out.println("Answers : \n"+"press q for:"+CompleteQestion[2]+",  "+"press w for:"+CompleteQestion[3]+",  "+"press e for:"+CompleteQestion[4]+",  "+"press r for:"+CompleteQestion[5]);
 
 
-
         //Scanner inp = new Scanner(System.in);
         //Answer = inp.nextLine();
         Answer = Character.toString(GUI.getChar());
-        System.out.println(Answer);
+        //System.out.println(Answer);
 
         if(Answer.equals("q")){
             Answer = CompleteQestion[2];
@@ -97,6 +96,5 @@ public class Question {
         }
 
     }
-
 
 }

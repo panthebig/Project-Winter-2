@@ -1,6 +1,6 @@
 public class Player {
     public int Score;
-    private int RoundsWon;
+    private int QueastionsAnsweredCorectly;
     private int HighScore;
 
     /***
@@ -8,7 +8,7 @@ public class Player {
      */
     public Player(){
         this.Score=0;
-        this.RoundsWon=0;
+        this.QueastionsAnsweredCorectly=0;
         this.HighScore=0;
     }
 
@@ -21,11 +21,12 @@ public class Player {
         if(this.Score>this.HighScore){
             this.HighScore=this.Score;
         }
-        this.RoundsWon=this.RoundsWon+i[1];
+        this.QueastionsAnsweredCorectly=this.QueastionsAnsweredCorectly+i[1];
     }
 
     public void PrintScore(){
         System.out.println("Total Score : " +this.Score);
     }
+
 
 }
