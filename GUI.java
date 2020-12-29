@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 import static java.lang.Thread.sleep;
 
@@ -27,7 +30,7 @@ public class GUI extends JFrame{
     private static JLabel TheRoundTypeLabel;
     private static JLabel TheQuestionLabel;
     private static JLabel TheCategoryLabel;
-    private static JLabel TheBettingLabel;
+    private static JLabel TheUtilityLabel;
     private static JLabel TheAnswersLabel1;
     private static JLabel TheAnswersLabel2;
     private static JLabel TheAnswersLabel3;
@@ -38,6 +41,9 @@ public class GUI extends JFrame{
     public static int CurrentRoundType;
     public static int GUIBetting;
     private static int NumberOfPlayers;
+
+    private static Timer timer;
+    public static int theTime;
 
     public GUI(){
 
@@ -85,11 +91,33 @@ public class GUI extends JFrame{
         });
         TopGamePanel.add(StartButton);
 
+
         HighScores = new JButton("Get The High Scores");
+        HighScores.setFocusable(false);
         HighScores.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Scanner myReader = null;
+                try {
+                    myReader = new Scanner(new File("Highscore.txt"));
+                } catch (FileNotFoundException fileNotFoundException) {
+                    fileNotFoundException.printStackTrace();
+                }
+                String currentline;
+                String[] line;
+                String[] temp = new String[3];
+                int i=0;
+                while ( myReader.hasNextLine()){
+                    currentline = myReader.nextLine(); // line[3] has the number
+                    line = currentline.split(" ");
+                    temp[i] = line[3];
+                    i++;
 
+                }
+                myReader.close();
+                JOptionPane.showMessageDialog(frame, "Solo highscore is:" + temp[0] + "\n" +
+                "Player 1 Wins: " + temp[1] + "\n"+
+                "Player 2 Wins: " + temp[2]);
             }
         });
         TopGamePanel.add(HighScores);
@@ -127,8 +155,8 @@ public class GUI extends JFrame{
         BetPanel.setBackground(Color.lightGray);
         CenterGamePanel.add(BetPanel);
 
-        TheBettingLabel = new JLabel();
-        BetPanel.add(TheBettingLabel);
+        TheUtilityLabel = new JLabel();
+        BetPanel.add(TheUtilityLabel);
 
         AnsewrsPanel1 = new JPanel();
         AnsewrsPanel1.setLayout(new FlowLayout(FlowLayout.LEADING));
@@ -183,8 +211,15 @@ public class GUI extends JFrame{
         CurrentRoundType=CurrentRound;
         TheRoundTypeLabel.setText("Round Type : " + RoundTypes[CurrentRound]);
 
-        if(CurrentRoundType!=1){
-            TheBettingLabel.setText("");
+        if(CurrentRoundType==0){//Correct Answer
+            TheUtilityLabel.setText("Choose the correct answer!");
+        }
+        else if(CurrentRoundType==1){
+            TheUtilityLabel.setText("Time to Bet!");
+        }
+        else if(CurrentRoundType==2){//Stopwatch
+            TheUtilityLabel.setText("It's Stopwatch round so be FAST!");
+
         }
 
     }
@@ -217,7 +252,7 @@ public class GUI extends JFrame{
         }
 
         if(CurrentRoundType==1){
-            TheBettingLabel.setText("The Betting is : " + GUIBetting);
+            TheUtilityLabel.setText("The Betting is : " + GUIBetting);
         }
 
     }
@@ -273,7 +308,7 @@ public class GUI extends JFrame{
             });
 
         }
-        System.out.println(character);
+        //System.out.println(character);
         return character;
     }
 
@@ -285,6 +320,40 @@ public class GUI extends JFrame{
         return GUIBetting;
     }
 
+    public  static  void StopWatch(){
+        TheUtilityLabel.setText("Starting time : 5 Seconds");
+
+        timer = new Timer(100, new ActionListener() {
+            private int count = 5000;
+
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (count <= 0) {
+                    ((Timer) e.getSource()).stop();
+                } else {
+                    count -= 100;
+                }
+                TheUtilityLabel.setText(Integer.toString(count));
+                theTime=count;
+            }
+
+        });
+        timer.start();
+
+
+    }
+
+    //public static void StartTimer(){
+        //timer.start();
+   // }
+    public static void StopTimer(){
+        timer.stop();
+        JOptionPane.showMessageDialog(frame,
+                "The question has been answered!\n Ready for the next one?",
+                "Inane warning",
+                JOptionPane.WARNING_MESSAGE);
+    }
 
 
 }
