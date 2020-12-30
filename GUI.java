@@ -115,7 +115,7 @@ public class GUI extends JFrame{
 
                 }
                 myReader.close();
-                JOptionPane.showMessageDialog(frame, "Solo highscore is:" + temp[0] + "\n" +
+                JOptionPane.showMessageDialog(frame, "Solo highscore is: " + temp[0] + "\n" +
                 "Player 1 Wins: " + temp[1] + "\n"+
                 "Player 2 Wins: " + temp[2]);
             }

@@ -52,7 +52,7 @@ public class Game {
 
             System.out.println("To choose the correct answer use keys 'q w e r'\n");
 
-            for(i=0;i<4;i++){ //allagi
+            for(i=0;i<4;i++){
 
                 Round aRound =new Round();
                 RoundPoints=aRound.RoundStart(GetRandomInt(),1);
@@ -64,12 +64,27 @@ public class Game {
         else {
             Player Player1 = new Player();
             Player Player2 = new Player();
+            int[] RoundPointsPlayer1 = new int[2];
+            int[] RoundPointsPlayer2 = new int[2];
+
+            for(i=0;i<1;i++) {
+                Round aRound = new Round();
+                RoundPoints = aRound.RoundStart(GetRandomInt(), 2);
+                RoundPointsPlayer1[0] = RoundPoints[0];
+                RoundPointsPlayer1[1] = RoundPoints[1];
+                RoundPointsPlayer2[0] = RoundPoints[2];
+                RoundPointsPlayer2[1] = RoundPoints[3];
+
+                Player1.ScoreCount(RoundPointsPlayer1);
+                Player2.ScoreCount(RoundPointsPlayer2);
+
+
+                Player1.PrintScore();
+                Player2.PrintScore();
+            }
             highscoresFile(Player1.Score , Player2.Score);
 
         }
-
-
-        // File out
 
     }
 
@@ -186,7 +201,6 @@ public class Game {
     public static int getSize(){
         return outStream.size();
     }
-
 
 
 }
