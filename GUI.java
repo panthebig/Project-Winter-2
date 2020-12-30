@@ -270,46 +270,90 @@ public class GUI extends JFrame{
 
     public static char getChar() {
 
-        flag = true;
-        while(flag){
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            frame.addKeyListener(new KeyAdapter() {
-                @Override
-                public void keyTyped(KeyEvent e) {
-                    super.keyTyped(e);
-                    switch (e.getKeyChar()) {
-                        case 'q':
-                            character = 'q';
-                            //System.out.println("Player 1 - Answer A");
-                            flag = false;
-                            break;
-                        case 'w':
-                            character = 'w';
-                            //System.out.println("Player 1 - Answer B");
-                            flag = false;
-                            break;
-                        case 'e':
-                            character = 'e';
-                            //System.out.println("Player 1 - Answer C");
-                            flag = false;
-                            break;
-                        case 'r':
-                            character = 'r';
-                            //System.out.println("Player 1 - Answer D");
-                            flag = false;
-                            break;
-                    }
+        if(Round.k==0) {
+            flag = true;
+            while (flag) {
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
+                frame.addKeyListener(new KeyAdapter() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                        super.keyTyped(e);
+                        switch (e.getKeyChar()) {
+                            case 'q':
+                                character = 'q';
+                                //System.out.println("Player 1 - Answer A");
+                                flag = false;
+                                break;
+                            case 'w':
+                                character = 'w';
+                                //System.out.println("Player 1 - Answer B");
+                                flag = false;
+                                break;
+                            case 'e':
+                                character = 'e';
+                                //System.out.println("Player 1 - Answer C");
+                                flag = false;
+                                break;
+                            case 'r':
+                                character = 'r';
+                                //System.out.println("Player 1 - Answer D");
+                                flag = false;
+                                break;
+                        }
+                    }
 
-            });
+                });
 
+            }
+            return character;
+        }
+        else{
+            flag = true;
+            while (flag) {
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                frame.addKeyListener(new KeyAdapter() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                        super.keyTyped(e);
+                        switch (e.getKeyChar()) {
+                            case 'u':
+                                character = 'u';
+                                //System.out.println("Player 2 - Answer A");
+                                flag = false;
+                                break;
+                            case 'i':
+                                character = 'i';
+                                //System.out.println("Player 2 - Answer B");
+                                flag = false;
+                                break;
+                            case 'o':
+                                character = 'o';
+                                //System.out.println("Player 2 - Answer C");
+                                flag = false;
+                                break;
+                            case 'p':
+                                character = 'p';
+                                //System.out.println("Player 2 - Answer D");
+                                flag = false;
+                                break;
+                        }
+                    }
+
+                });
+
+            }
+            return character;
         }
         //System.out.println(character);
-        return character;
+
     }
 
     public static int numberOfPlayers(){

@@ -69,19 +69,29 @@ public class Question {
         Answer = Character.toString(GUI.getChar());
         //System.out.println(Answer);
 
+        if(Round.k==0) {
+            if (Answer.equals("q")) {
+                Answer = CompleteQestion[2];
+            } else if (Answer.equals("w")) {
+                Answer = CompleteQestion[3];
+            } else if (Answer.equals("e")) {
+                Answer = CompleteQestion[4];
+            } else if (Answer.equals("r")) {
+                Answer = CompleteQestion[5];
+            }
+        }
+        else if(Round.k==1){
+            if (Answer.equals("u")) {
+                Answer = CompleteQestion[2];
+            } else if (Answer.equals("i")) {
+                Answer = CompleteQestion[3];
+            } else if (Answer.equals("o")) {
+                Answer = CompleteQestion[4];
+            } else if (Answer.equals("p")) {
+                Answer = CompleteQestion[5];
+            }
+        }
 
-        if(Answer.equals("q")){
-            Answer = CompleteQestion[2];
-        }
-        else if(Answer.equals("w")){
-            Answer = CompleteQestion[3];
-        }
-        else if(Answer.equals("e")){
-            Answer = CompleteQestion[4];
-        }
-        else if(Answer.equals("r")){
-            Answer = CompleteQestion[5];
-        }
 
 
 

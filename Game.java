@@ -69,7 +69,7 @@ public class Game {
 
             for(i=0;i<1;i++) {
                 Round aRound = new Round();
-                RoundPoints = aRound.RoundStart(4, 2);
+                RoundPoints = aRound.RoundStart(1, 2);
                 RoundPointsPlayer1[0] = RoundPoints[0];
                 RoundPointsPlayer1[1] = RoundPoints[1];
                 RoundPointsPlayer2[0] = RoundPoints[2];

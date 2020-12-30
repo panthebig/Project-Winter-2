@@ -7,7 +7,7 @@ public class  Round{
     private boolean X;
     public static String[] Rounds = {"Correct Answer","Betting","Stopwatch","Thermometer"};
     public static String[] Cat = {"Food","Science","Music","Technology","Films"};
-    public int k;
+    public static int k;
 
 
     public Round(){
