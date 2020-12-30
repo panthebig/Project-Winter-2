@@ -36,7 +36,7 @@ public class Question {
 
         int categoryStartIndex=0;
         int categoryEndIndex=0;
-        Boolean notFound = true;
+        boolean notFound = true;
         for(int i=0;i<Game.getSize();i++){
 
             if(cat.equals(Game.getString(i)[0]) && notFound){
@@ -58,7 +58,7 @@ public class Question {
         ArrayShuffle(CompleteQestion);
 
         GUI.updateQuestion(CompleteQestion);
-        //GUI.updateAnswers(CompleteQestion);
+
 
         //System.out.println("Question : \n"+CompleteQestion[1]);
         //System.out.println("Answers : \n"+"press q for:"+CompleteQestion[2]+",  "+"press w for:"+CompleteQestion[3]+",  "+"press e for:"+CompleteQestion[4]+",  "+"press r for:"+CompleteQestion[5]);
@@ -68,6 +68,7 @@ public class Question {
         //Answer = inp.nextLine();
         Answer = Character.toString(GUI.getChar());
         //System.out.println(Answer);
+
 
         if(Answer.equals("q")){
             Answer = CompleteQestion[2];

@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 import static java.lang.Thread.sleep;
 
@@ -79,7 +82,7 @@ public class GUI extends JFrame{
                     NumberOfPlayers=1;
 
                 }
-                else {
+                else if (n==1){
                     System.out.println(players[n] + " players will be playing");
                     NumberOfPlayers=2;
                 }//can easily add more players!
@@ -90,10 +93,31 @@ public class GUI extends JFrame{
 
 
         HighScores = new JButton("Get The High Scores");
+        HighScores.setFocusable(false);
         HighScores.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Scanner myReader = null;
+                try {
+                    myReader = new Scanner(new File("Highscore.txt"));
+                } catch (FileNotFoundException fileNotFoundException) {
+                    fileNotFoundException.printStackTrace();
+                }
+                String currentline;
+                String[] line;
+                String[] temp = new String[3];
+                int i=0;
+                while ( myReader.hasNextLine()){
+                    currentline = myReader.nextLine(); // line[3] has the number
+                    line = currentline.split(" ");
+                    temp[i] = line[3];
+                    i++;
 
+                }
+                myReader.close();
+                JOptionPane.showMessageDialog(frame, "Solo highscore is: " + temp[0] + "\n" +
+                        "Player 1 Wins: " + temp[1] + "\n"+
+                        "Player 2 Wins: " + temp[2]);
             }
         });
         TopGamePanel.add(HighScores);
@@ -321,8 +345,8 @@ public class GUI extends JFrame{
     }
 
     //public static void StartTimer(){
-        //timer.start();
-   // }
+    //timer.start();
+    // }
     public static void StopTimer(){
         timer.stop();
         JOptionPane.showMessageDialog(frame,
