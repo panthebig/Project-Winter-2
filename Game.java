@@ -69,7 +69,7 @@ public class Game {
 
             for(i=0;i<1;i++) {
                 Round aRound = new Round();
-                RoundPoints = aRound.RoundStart(GetRandomInt(), 2);
+                RoundPoints = aRound.RoundStart(1, 2);
                 RoundPointsPlayer1[0] = RoundPoints[0];
                 RoundPointsPlayer1[1] = RoundPoints[1];
                 RoundPointsPlayer2[0] = RoundPoints[2];
@@ -93,8 +93,14 @@ public class Game {
      * @return randomNum which is the random number
      */
     public int GetRandomInt(){
-        int randomNum = ThreadLocalRandom.current().nextInt(1, 4); //[1,3]
-        return randomNum;
+        if(AmountOfPlayers==1){
+            int randomNum = ThreadLocalRandom.current().nextInt(1, 4); //[1,3]
+            return randomNum;
+        }
+        else{
+            int randomNum = ThreadLocalRandom.current().nextInt(1, 5); //[1,4] Edo telika prepei na ginei [1,5] gt oi 2 paiktes mporoun na ta paiskoun ola
+            return randomNum;
+        }
     }
 
 
@@ -186,7 +192,7 @@ public class Game {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-        
+
         return ar;
 
     }

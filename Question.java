@@ -52,6 +52,11 @@ public class Question {
 
 
         int randomQuestionIndex = ThreadLocalRandom.current().nextInt(categoryStartIndex,categoryEndIndex);
+        if(cat == "Geography"){
+            System.out.println("random index " +randomQuestionIndex + " start idnex " + categoryStartIndex + " cat end " + categoryEndIndex);
+            GUI.loadImage(randomQuestionIndex-categoryStartIndex+1); //TODO oso mikrenei o diktis allzoyn oi erotisis uesikai den antistixoyn stis eikones(dictionary ?)
+        }
+
         System.out.println("Start:"+categoryStartIndex +"   "+categoryEndIndex+"\n");
         String[] CompleteQestion = Game.getString(randomQuestionIndex);
         String[] KeyBind = {"q","w","e","r"};
@@ -69,19 +74,29 @@ public class Question {
         Answer = Character.toString(GUI.getChar());
         //System.out.println(Answer);
 
+        if(Round.k==0) {
+            if (Answer.equals("q")) {
+                Answer = CompleteQestion[2];
+            } else if (Answer.equals("w")) {
+                Answer = CompleteQestion[3];
+            } else if (Answer.equals("e")) {
+                Answer = CompleteQestion[4];
+            } else if (Answer.equals("r")) {
+                Answer = CompleteQestion[5];
+            }
+        }
+        else if(Round.k==1){
+            if (Answer.equals("u")) {
+                Answer = CompleteQestion[2];
+            } else if (Answer.equals("i")) {
+                Answer = CompleteQestion[3];
+            } else if (Answer.equals("o")) {
+                Answer = CompleteQestion[4];
+            } else if (Answer.equals("p")) {
+                Answer = CompleteQestion[5];
+            }
+        }
 
-        if(Answer.equals("q")){
-            Answer = CompleteQestion[2];
-        }
-        else if(Answer.equals("w")){
-            Answer = CompleteQestion[3];
-        }
-        else if(Answer.equals("e")){
-            Answer = CompleteQestion[4];
-        }
-        else if(Answer.equals("r")){
-            Answer = CompleteQestion[5];
-        }
 
 
 

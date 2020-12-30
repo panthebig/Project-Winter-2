@@ -7,6 +7,11 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 import static java.lang.Thread.sleep;
 
@@ -35,6 +40,7 @@ public class GUI extends JFrame{
     private static JLabel TheAnswersLabel2;
     private static JLabel TheAnswersLabel3;
     private static JLabel TheAnswersLabel4;
+    private static JLabel Image;
 
     public static char character;
     public static boolean flag = true;
@@ -82,7 +88,7 @@ public class GUI extends JFrame{
                     NumberOfPlayers=1;
 
                 }
-                else {
+                else if (n==1){
                     System.out.println(players[n] + " players will be playing");
                     NumberOfPlayers=2;
                 }//can easily add more players!
@@ -116,8 +122,8 @@ public class GUI extends JFrame{
                 }
                 myReader.close();
                 JOptionPane.showMessageDialog(frame, "Solo highscore is: " + temp[0] + "\n" +
-                "Player 1 Wins: " + temp[1] + "\n"+
-                "Player 2 Wins: " + temp[2]);
+                        "Player 1 Wins: " + temp[1] + "\n"+
+                        "Player 2 Wins: " + temp[2]);
             }
         });
         TopGamePanel.add(HighScores);
@@ -281,27 +287,53 @@ public class GUI extends JFrame{
                 @Override
                 public void keyTyped(KeyEvent e) {
                     super.keyTyped(e);
-                    switch (e.getKeyChar()) {
-                        case 'q':
-                            character = 'q';
-                            //System.out.println("Player 1 - Answer A");
-                            flag = false;
-                            break;
-                        case 'w':
-                            character = 'w';
-                            //System.out.println("Player 1 - Answer B");
-                            flag = false;
-                            break;
-                        case 'e':
-                            character = 'e';
-                            //System.out.println("Player 1 - Answer C");
-                            flag = false;
-                            break;
-                        case 'r':
-                            character = 'r';
-                            //System.out.println("Player 1 - Answer D");
-                            flag = false;
-                            break;
+                    if(Round.k==0) {
+                        switch (e.getKeyChar()) {
+                            case 'q':
+                                character = 'q';
+                                //System.out.println("Player 1 - Answer A");
+                                flag = false;
+                                break;
+                            case 'w':
+                                character = 'w';
+                                //System.out.println("Player 1 - Answer B");
+                                flag = false;
+                                break;
+                            case 'e':
+                                character = 'e';
+                                //System.out.println("Player 1 - Answer C");
+                                flag = false;
+                                break;
+                            case 'r':
+                                character = 'r';
+                                //System.out.println("Player 1 - Answer D");
+                                flag = false;
+                                break;
+                        }
+                    }
+                    else if(Round.k==1){
+                        switch (e.getKeyChar()) {
+                            case 'u':
+                                character = 'u';
+                                //System.out.println("Player 1 - Answer A");
+                                flag = false;
+                                break;
+                            case 'i':
+                                character = 'i';
+                                //System.out.println("Player 1 - Answer B");
+                                flag = false;
+                                break;
+                            case 'o':
+                                character = 'o';
+                                //System.out.println("Player 1 - Answer C");
+                                flag = false;
+                                break;
+                            case 'p':
+                                character = 'p';
+                                //System.out.println("Player 1 - Answer D");
+                                flag = false;
+                                break;
+                        }
                     }
                 }
 
@@ -345,14 +377,30 @@ public class GUI extends JFrame{
     }
 
     //public static void StartTimer(){
-        //timer.start();
-   // }
+    //timer.start();
+    // }
     public static void StopTimer(){
         timer.stop();
         JOptionPane.showMessageDialog(frame,
                 "The question has been answered!\n Ready for the next one?",
                 "Inane warning",
                 JOptionPane.WARNING_MESSAGE);
+    }
+
+    public static void loadImage(int index){
+        String imagePath = "Images/img"+index+".jpg";
+        /*Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Image img = toolkit.createImage(imagePath);
+        Image.setIcon((Icon) img);*/
+
+        try {
+            BufferedImage img = ImageIO.read(new File(imagePath));
+            ImageIcon icon = new ImageIcon(img);
+            JLabel label = new JLabel(icon);
+            JOptionPane.showMessageDialog(null, label);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

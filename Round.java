@@ -5,9 +5,9 @@ public class  Round{
 
     private  int I,rand;
     private boolean X;
-    public static String[] Rounds = {"Correct Answer","Betting","Stopwatch"};
-    public static String[] Cat = {"Food","Science","Music","Technology","Films"};
-    public int k;
+    public static String[] Rounds = {"Correct Answer","Betting","Stopwatch","Thermometer"};
+    public static String[] Cat = {"Food","Science","Music","Technology","Films","Geography"}; // TODO
+    public static int k;
 
 
     public Round(){
@@ -46,56 +46,102 @@ public class  Round{
 
         GUI.updateRound(Rounds,i);
 
+        if(i==1 || i==2 || i==3) {//Correct Answer or Betting or StopWatch
 
-        for(I=0;I<4;I++) { //To Game kanei 4 erwthseis gurou i kai tuxaias katigorias
 
-            rand=ThreadLocalRandom.current().nextInt(0, 5);  //[0,4]
+            for (I = 0; I < 4; I++) { //To Game kanei 4 erwthseis gurou i kai tuxaias katigorias
 
-            for(k=0;k<AmountOfPlayers;k++) {
+                rand = ThreadLocalRandom.current().nextInt(0, 6);  //TODO [0,5]
 
-                if(k==0){
-                    System.out.println("Player 1 : ");
-                }
-                else if(k==1){
-                    System.out.println("Player 2 : ");
-                }
+                for (k = 0; k < AmountOfPlayers; k++) {
 
-                if (i == 1) {
-                    System.out.println("And The Category you will be playing this Question is :-\n" + Cat[rand]);
-                    X = RoundAnswer();
-                    if (X) {
-                        Stats[2*k] = Stats[2*k] + 1000;
-                        Stats[1+2*k]++;
+                    if (k == 0) {
+                        System.out.println("Player 1 : ");
+                    } else if (k == 1) {
+                        System.out.println("Player 2 : ");
                     }
 
+                    if (i == 1) {
+                        System.out.println("And The Category you will be playing this Question is :-\n" + Cat[rand]);
+                        X = RoundAnswer();
+                        if (X) {
+                            Stats[2 * k] = Stats[2 * k] + 1000;
+                            Stats[1 + 2 * k]++;
+                        }
 
-                } else if (i == 2) {
-                    System.out.println("And The Category you will be playing this Question is :-\n" + Cat[rand]);
 
-                    int am = GetBet();
+                    } else if (i == 2) {
+                        System.out.println("And The Category you will be playing this Question is :-\n" + Cat[rand]);
 
-                    X = RoundAnswer();
-                    if (X) {
-                        Stats[2*k] = Stats[2*k] + am;
-                        Stats[1+2*k]++;
-                    } else {
-                        Stats[2*k] = Stats[2*k] - am;
+                        int am = GetBet();
+
+                        X = RoundAnswer();
+                        if (X) {
+                            Stats[2 * k] = Stats[2 * k] + am;
+                            Stats[1 + 2 * k]++;
+                        } else {
+                            Stats[2 * k] = Stats[2 * k] - am;
+                        }
+                    } else if (i == 3) {
+
+                        GUI.StopWatch();
+                        X = RoundAnswer();
+                        GUI.StopTimer();
+
+                        if (X) {
+                            Stats[2 * k] = (int) (Stats[2 * k] + GUI.theTime * 0.2);
+                            Stats[1 + 2 * k]++;
+                        }
+
                     }
-                } else if (i == 3) {
-
-                    GUI.StopWatch();
-                    X = RoundAnswer();
-                    GUI.StopTimer();
-
-                    if (X) {
-                        Stats[2*k] = (int) (Stats[2*k] + GUI.theTime * 0.2);
-                        Stats[1+2*k]++;
-                    }
-
                 }
+
+            }
+        }
+        else{//Thermometer or Fast Answer
+            if(i==4) {//Thermometer
+
+                int counter = 0;
+                int[] ThermometerStats = new int[2];
+                ThermometerStats[0]=0;
+                ThermometerStats[1]=0;
+                while ((ThermometerStats[0] < 5 && ThermometerStats[1] < 5) && counter < 10) {//Runs for 10 questions each so to make sure the programm doesnt run out of questions early on.
+                    for (k = 0; k < 2; k++) {
+
+                        rand = ThreadLocalRandom.current().nextInt(0, 5);  //[0,4]
+
+                        if (k == 0) {
+                            System.out.println("Player 1 : ");
+                        } else if (k == 1) {
+                            System.out.println("Player 2 : ");
+                        }
+
+                        X = RoundAnswer();
+                        if (X) {
+                            ThermometerStats[k]++;
+                            Stats[1 + 2 * k]++;
+                        }
+
+                        if(ThermometerStats[0] == 5 || ThermometerStats[1] == 5){
+                            break;
+                        }
+                    }
+
+                    counter++;
+                }
+                if (ThermometerStats[0] == 5) {
+                    Stats[0] = Stats[0] + 5000;
+                } else if (ThermometerStats[1] == 5) {
+                    Stats[2] = Stats[2] + 5000;
+                }
+
+            }
+            else{//Fast Answer
+
             }
 
         }
+
         return Stats;
     }
 
