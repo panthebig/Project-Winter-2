@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.awt.Graphics;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -20,6 +21,7 @@ public class GUI extends JFrame{
 
 
     public static JFrame frame;
+    private JPanel ImagePanel;
     private JPanel TopGamePanel;
     private JPanel CenterGamePanel;
     private JPanel RoundTypePanel;
@@ -50,12 +52,13 @@ public class GUI extends JFrame{
 
     private static Timer timer;
     public static int theTime;
+    private static JLabel label = new JLabel();
 
     public GUI(){
 
         frame = new JFrame("BuzzQuizWorld!");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(500,400);
+        frame.setSize(1000,400);
         frame.setVisible(false);
         frame.setLayout(new BorderLayout());
         frame.setFocusable(true);
@@ -387,21 +390,37 @@ public class GUI extends JFrame{
                 JOptionPane.WARNING_MESSAGE);
     }
 
-    public static void loadImage(int index){
-        String imagePath = "Images/img"+index+".jpg";
+
+
+    public static void loadImage(String imageName){
+        String imagePath = "Images/"+imageName+".jpg";
         /*Toolkit toolkit = Toolkit.getDefaultToolkit();
         Image img = toolkit.createImage(imagePath);
         Image.setIcon((Icon) img);*/
 
         try {
             BufferedImage img = ImageIO.read(new File(imagePath));
+            //Graphics g =new Graphics
+            //Graphics.drawImage();
+
+            //*
             ImageIcon icon = new ImageIcon(img);
-            JLabel label = new JLabel(icon);
-            JOptionPane.showMessageDialog(null, label);
+            label.setIcon(icon);
+            JPanel ImagePanel = new JPanel();
+            ImagePanel.add(label);
+            frame.add(ImagePanel,BorderLayout.LINE_END);
+            //*/
+
+            //JPanel panel = (JPanel)frame.getContentPane();
+
+
+
+            //JOptionPane.showMessageDialog(null, label);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
 
 }

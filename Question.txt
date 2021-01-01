@@ -82,3 +82,23 @@ Films	What is the highest-grossing box office film of all time?	Avengers: Endgam
 Films	Which DJ played himself in "American Graffiti"?	Wolfman Jack	David Guetta	Alok	Steve Aoki	Wolfman Jack
 Films	Who tells Thor that Odin is dead in the movie "Thor"?	Jane Foster	Odin	Loki	Hela	Loki
 Films	What is Captain Sparrow's first name in "Pirates of the Caribbean"?	Jack	John	James	Joshua	Jack
+Geography	The Eiffel Tower is a famous landmark you’ll find in which city?	Rome	Lisbon	Madrid	Paris	Paris
+Geography	This huge rock known as Uluru is found in which country?	Italy	Australia	Madagascar	Brazil	Australia
+Geography	You’ll find this beautiful landmark in Singapore. What is it called?	Miracle Garden	Kew Gardens	Gardens by the Bay	San Grato Park	Gardens by the Bay
+Geography	Below is the “Christ the Redeemer” monument. Which South American city will you find it in?	Rio de Janeiro	Santiago	Buenos Aires	Salvador	Rio de Janeiro
+Geography	Seen below is the stunning Peyto Lake. Which country will you find it?	Croatia	USA	Canada	Japan	Canada
+Geography	The Sagrada Familia seen below has been in construction since 1882, but where is it?	Sao Paulo	Prague	Madrid	Barcelona	Barcelona
+Geography	What is the official name of this tower which you’ll find in Seattle?	Oriental Pearl Tower	Milad Tower	CN Tower	Space Needle	Space Needle
+Geography	Currently, the tallest building in the world the Burj Khalifa reaches heights of 830m – Do you know which city it’s in?	Moscow	Dubai	Muscat	Doha	Dubai
+Geography	Once part of an ancient empire, Machu Picchu is a popular landmark you’ll find in which country?	Bolivia	Ecuador	Burma	Peru	Peru
+Geography	This bridge connects the Lesser Town to the Old Town in Prague. What is the official name of it?	Ponte Vecchio	Charles Bridge	Brooklyn Bridge	Chapel Bridge	Charles Bridge
+Geography	Where in Egypt will you find these famous pyramids?	Alexandria	Aswan	Giza	Luxor	Giza
+Geography	This castle in Romania is famously connected to the Dracula novels. What is the name of it?	Bodiam Castle	Bran Castle	Glamis Castle	Corvin Castle	Bran Castle
+Geography	Below is India’s most famous landmark and one of the New 7 Wonders of the World. What is it called?	Safdarjung Tomb	Pantheon	Qutub Minar	The Taj Mahal	The Taj Mahal
+Geography	This Giant Buddha is found somewhere in China. Do you know which city?	Leshan	Shanghai	Chongqing	Quanzhou	Leshan
+Geography	This unusual tower is located in Italy. Do you know what it’s called?	St Mark’s Campanile	Leaning Tower of Pisa	Giotto’s Bell Tower	Tower of Mangia	Leaning Tower of Pisa
+Geography	Seen is the Grand-Prismatic-Spring. Which USA national park will you find it in?	Arches	Yosemite	Yellowstone	Glacier National Park	Yellowstone
+Geography	This stunning landmark called Wat Rong Khun (or the White Temple) is found somewhere in Thailand. Do you know where?	Phuket	Chiang Rai	Bangkok	Chiang Mai	Chiang Rai
+Geography	These ancient rocks have been a mystery for centuries. They are located in England. What are they called?	The Pillar Rocks	Balancing Rock	Stonehenge	Old Harry Rocks	Stonehenge
+Geography	This cool and unique architecture is found in a city in the Netherlands. Which one?	The Hague	Amsterdam	Netherlands	Rotterdam	Rotterdam
+Geography	Lake Wanaka is a natural landmark famous for the tree that sticks out from the water. Which country will you find it in?	Italy	Georgia	New Zealand	Malaysia	New Zealand

@@ -151,7 +151,7 @@ public class  Round{
      */
     public boolean RoundAnswer(){
         Question CQ = new Question();
-        return CQ.QuestionsAndAnswer(Cat[rand]);
+        return CQ.QuestionsAndAnswer(Cat[5]);
 
     }
 

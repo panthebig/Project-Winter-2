@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.*;
@@ -52,14 +53,14 @@ public class Question {
 
 
         int randomQuestionIndex = ThreadLocalRandom.current().nextInt(categoryStartIndex,categoryEndIndex);
-        if(cat == "Geography"){
-            System.out.println("random index " +randomQuestionIndex + " start idnex " + categoryStartIndex + " cat end " + categoryEndIndex);
-            GUI.loadImage(randomQuestionIndex-categoryStartIndex+1); //TODO oso mikrenei o diktis allzoyn oi erotisis uesikai den antistixoyn stis eikones(dictionary ?)
-        }
 
         System.out.println("Start:"+categoryStartIndex +"   "+categoryEndIndex+"\n");
         String[] CompleteQestion = Game.getString(randomQuestionIndex);
         String[] KeyBind = {"q","w","e","r"};
+        if(cat == "Geography"){
+            System.out.println("random index " +randomQuestionIndex + " start idnex " + categoryStartIndex + " cat end " + categoryEndIndex);
+            GUI.loadImage(CompleteQestion[6]); //TODO oso mikrenei o diktis allzoyn oi erotisis uesikai den antistixoyn stis eikones(dictionary ?)
+        }
         ArrayShuffle(CompleteQestion);
 
         GUI.updateQuestion(CompleteQestion);
@@ -73,6 +74,7 @@ public class Question {
         //Answer = inp.nextLine();
         Answer = Character.toString(GUI.getChar());
         //System.out.println(Answer);
+
 
         if(Round.k==0) {
             if (Answer.equals("q")) {
