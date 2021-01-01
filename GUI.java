@@ -23,7 +23,7 @@ public class GUI extends JFrame{
     public static JFrame frame;
     private JPanel ImagePanel;
     private JPanel TopGamePanel;
-    private JPanel CenterGamePanel;
+    private static JPanel CenterGamePanel;
     private JPanel RoundTypePanel;
     private JPanel QuestionPanel;
     private JPanel CategoryPanel;
@@ -52,13 +52,13 @@ public class GUI extends JFrame{
 
     private static Timer timer;
     public static int theTime;
-    private static JLabel label = new JLabel();
+    private static JLabel imageLabel = new JLabel();
 
     public GUI(){
 
         frame = new JFrame("BuzzQuizWorld!");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(1000,400);
+        frame.setSize(1300,450);
         frame.setVisible(false);
         frame.setLayout(new BorderLayout());
         frame.setFocusable(true);
@@ -132,7 +132,7 @@ public class GUI extends JFrame{
         TopGamePanel.add(HighScores);
 
         CenterGamePanel = new JPanel();
-        CenterGamePanel.setLayout(new GridLayout(8,1));
+        CenterGamePanel.setLayout(new GridLayout(8,2));//TODO this ofr testing
         CenterGamePanel.setBackground(Color.DARK_GRAY);
         frame.add(CenterGamePanel,BorderLayout.CENTER);
 
@@ -405,10 +405,12 @@ public class GUI extends JFrame{
 
             //*
             ImageIcon icon = new ImageIcon(img);
-            label.setIcon(icon);
-            JPanel ImagePanel = new JPanel();
-            ImagePanel.add(label);
-            frame.add(ImagePanel,BorderLayout.LINE_END);
+            imageLabel.setIcon(icon);
+            //JPanel ImagePanel = new JPanel();
+            //ImagePanel.add(imageLabel);
+            frame.add(imageLabel,BorderLayout.LINE_END);
+            frame.repaint();
+
             //*/
 
             //JPanel panel = (JPanel)frame.getContentPane();
@@ -419,6 +421,10 @@ public class GUI extends JFrame{
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void unloadImage(){
+        frame.remove(imageLabel);
     }
 
 

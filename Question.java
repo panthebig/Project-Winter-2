@@ -59,11 +59,11 @@ public class Question {
         String[] KeyBind = {"q","w","e","r"};
         if(cat == "Geography"){
             System.out.println("random index " +randomQuestionIndex + " start idnex " + categoryStartIndex + " cat end " + categoryEndIndex);
-            GUI.loadImage(CompleteQestion[6]); //TODO oso mikrenei o diktis allzoyn oi erotisis uesikai den antistixoyn stis eikones(dictionary ?)
+            GUI.loadImage(CompleteQestion[6]);
         }
         ArrayShuffle(CompleteQestion);
 
-        GUI.updateQuestion(CompleteQestion);
+        GUI.updateQuestion(CompleteQestion);//TODO change if it is 2 players print UIOP insted of QWER
 
 
         //System.out.println("Question : \n"+CompleteQestion[1]);
@@ -74,6 +74,11 @@ public class Question {
         //Answer = inp.nextLine();
         Answer = Character.toString(GUI.getChar());
         //System.out.println(Answer);
+
+
+        if(cat == "Geography"){
+            GUI.unloadImage();
+        }
 
 
         if(Round.k==0) {
@@ -98,8 +103,6 @@ public class Question {
                 Answer = CompleteQestion[5];
             }
         }
-
-
 
 
         if(Answer.equals(CompleteQestion[6])){
