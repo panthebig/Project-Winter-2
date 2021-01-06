@@ -147,6 +147,8 @@ public class Question {
                 Speed[0]="Player2";
             }
 
+
+            System.out.println(Speed[0]);
             if (Answer.equals(CompleteQestion[6])) {
                 System.out.println("The Fastest player Answered Correctly\n");
                 Speed[1]="Correct";

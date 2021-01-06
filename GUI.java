@@ -234,6 +234,10 @@ public class GUI extends JFrame{
             TheUtilityLabel.setText("It's Thermometer round!");
 
         }
+        else if(CurrentRoundType==4){//Stopwatch
+            TheUtilityLabel.setText("It's Fast Answer round!");
+
+        }
 
     }
 
@@ -328,6 +332,50 @@ public class GUI extends JFrame{
                     }
                     else if(Round.k==1){
                         switch (e.getKeyChar()) {
+                            case 'u':
+                                character = 'u';
+                                //System.out.println("Player 1 - Answer A");
+                                flag = false;
+                                break;
+                            case 'i':
+                                character = 'i';
+                                //System.out.println("Player 1 - Answer B");
+                                flag = false;
+                                break;
+                            case 'o':
+                                character = 'o';
+                                //System.out.println("Player 1 - Answer C");
+                                flag = false;
+                                break;
+                            case 'p':
+                                character = 'p';
+                                //System.out.println("Player 1 - Answer D");
+                                flag = false;
+                                break;
+                        }
+                    }
+                    else if(Round.k==3){//It is impossible for k to become 3 in the entire program so k=3 is used to mark the fastest key pressed
+                        switch (e.getKeyChar()) {
+                            case 'q':
+                                character = 'q';
+                                //System.out.println("Player 1 - Answer A");
+                                flag = false;
+                                break;
+                            case 'w':
+                                character = 'w';
+                                //System.out.println("Player 1 - Answer B");
+                                flag = false;
+                                break;
+                            case 'e':
+                                character = 'e';
+                                //System.out.println("Player 1 - Answer C");
+                                flag = false;
+                                break;
+                            case 'r':
+                                character = 'r';
+                                //System.out.println("Player 1 - Answer D");
+                                flag = false;
+                                break;
                             case 'u':
                                 character = 'u';
                                 //System.out.println("Player 1 - Answer A");
