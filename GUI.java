@@ -4,6 +4,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.awt.Graphics;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 import static java.lang.Thread.sleep;
 
@@ -12,8 +21,9 @@ public class GUI extends JFrame{
 
 
     public static JFrame frame;
+    private JPanel ImagePanel;
     private JPanel TopGamePanel;
-    private JPanel CenterGamePanel;
+    private static JPanel CenterGamePanel;
     private JPanel RoundTypePanel;
     private JPanel QuestionPanel;
     private JPanel CategoryPanel;
@@ -32,6 +42,7 @@ public class GUI extends JFrame{
     private static JLabel TheAnswersLabel2;
     private static JLabel TheAnswersLabel3;
     private static JLabel TheAnswersLabel4;
+    private static JLabel Image;
 
     public static char character;
     public static boolean flag = true;
@@ -41,12 +52,13 @@ public class GUI extends JFrame{
 
     private static Timer timer;
     public static int theTime;
+    private static JLabel imageLabel;
 
     public GUI(){
 
         frame = new JFrame("BuzzQuizWorld!");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(500,400);
+        frame.setSize(1300,450);
         frame.setVisible(false);
         frame.setLayout(new BorderLayout());
         frame.setFocusable(true);
@@ -79,7 +91,7 @@ public class GUI extends JFrame{
                     NumberOfPlayers=1;
 
                 }
-                else {
+                else if (n==1){
                     System.out.println(players[n] + " players will be playing");
                     NumberOfPlayers=2;
                 }//can easily add more players!
@@ -90,16 +102,37 @@ public class GUI extends JFrame{
 
 
         HighScores = new JButton("Get The High Scores");
+        HighScores.setFocusable(false);
         HighScores.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Scanner myReader = null;
+                try {
+                    myReader = new Scanner(new File("Highscore.txt"));
+                } catch (FileNotFoundException fileNotFoundException) {
+                    fileNotFoundException.printStackTrace();
+                }
+                String currentline;
+                String[] line;
+                String[] temp = new String[3];
+                int i=0;
+                while ( myReader.hasNextLine()){
+                    currentline = myReader.nextLine(); // line[3] has the number
+                    line = currentline.split(" ");
+                    temp[i] = line[3];
+                    i++;
 
+                }
+                myReader.close();
+                JOptionPane.showMessageDialog(frame, "Solo highscore is: " + temp[0] + "\n" +
+                        "Player 1 Wins: " + temp[1] + "\n"+
+                        "Player 2 Wins: " + temp[2]);
             }
         });
         TopGamePanel.add(HighScores);
 
         CenterGamePanel = new JPanel();
-        CenterGamePanel.setLayout(new GridLayout(8,1));
+        CenterGamePanel.setLayout(new GridLayout(8,2));//TODO this ofr testing
         CenterGamePanel.setBackground(Color.DARK_GRAY);
         frame.add(CenterGamePanel,BorderLayout.CENTER);
 
@@ -166,7 +199,7 @@ public class GUI extends JFrame{
         TheAnswersLabel4 = new JLabel("TEST4");
         AnsewrsPanel4.add(TheAnswersLabel4);
 
-
+        imageLabel = new JLabel();
 
 
     }
@@ -195,6 +228,10 @@ public class GUI extends JFrame{
         }
         else if(CurrentRoundType==2){//Stopwatch
             TheUtilityLabel.setText("It's Stopwatch round so be FAST!");
+
+        }
+        else if(CurrentRoundType==3){//Stopwatch
+            TheUtilityLabel.setText("It's Thermometer round!");
 
         }
 
@@ -236,10 +273,18 @@ public class GUI extends JFrame{
     public static void updateQuestion(String[] Questions){
         TheCategoryLabel.setText("Category : " + Questions[0]);
         TheQuestionLabel.setText("Question : " + Questions[1]);
-        TheAnswersLabel1.setText("Q : " + Questions[2]);
-        TheAnswersLabel2.setText("W : " + Questions[3]);
-        TheAnswersLabel3.setText("E : " + Questions[4]);
-        TheAnswersLabel4.setText("R : " + Questions[5]);
+        if(Round.k==0) {
+            TheAnswersLabel1.setText("Q : " + Questions[2]);
+            TheAnswersLabel2.setText("W : " + Questions[3]);
+            TheAnswersLabel3.setText("E : " + Questions[4]);
+            TheAnswersLabel4.setText("R : " + Questions[5]);
+        }
+        else if (Round.k==1){
+            TheAnswersLabel1.setText("U : " + Questions[2]);
+            TheAnswersLabel2.setText("I : " + Questions[3]);
+            TheAnswersLabel3.setText("O : " + Questions[4]);
+            TheAnswersLabel4.setText("P : " + Questions[5]);
+        }
 
 
     }
@@ -257,27 +302,53 @@ public class GUI extends JFrame{
                 @Override
                 public void keyTyped(KeyEvent e) {
                     super.keyTyped(e);
-                    switch (e.getKeyChar()) {
-                        case 'q':
-                            character = 'q';
-                            //System.out.println("Player 1 - Answer A");
-                            flag = false;
-                            break;
-                        case 'w':
-                            character = 'w';
-                            //System.out.println("Player 1 - Answer B");
-                            flag = false;
-                            break;
-                        case 'e':
-                            character = 'e';
-                            //System.out.println("Player 1 - Answer C");
-                            flag = false;
-                            break;
-                        case 'r':
-                            character = 'r';
-                            //System.out.println("Player 1 - Answer D");
-                            flag = false;
-                            break;
+                    if(Round.k==0) {
+                        switch (e.getKeyChar()) {
+                            case 'q':
+                                character = 'q';
+                                //System.out.println("Player 1 - Answer A");
+                                flag = false;
+                                break;
+                            case 'w':
+                                character = 'w';
+                                //System.out.println("Player 1 - Answer B");
+                                flag = false;
+                                break;
+                            case 'e':
+                                character = 'e';
+                                //System.out.println("Player 1 - Answer C");
+                                flag = false;
+                                break;
+                            case 'r':
+                                character = 'r';
+                                //System.out.println("Player 1 - Answer D");
+                                flag = false;
+                                break;
+                        }
+                    }
+                    else if(Round.k==1){
+                        switch (e.getKeyChar()) {
+                            case 'u':
+                                character = 'u';
+                                //System.out.println("Player 1 - Answer A");
+                                flag = false;
+                                break;
+                            case 'i':
+                                character = 'i';
+                                //System.out.println("Player 1 - Answer B");
+                                flag = false;
+                                break;
+                            case 'o':
+                                character = 'o';
+                                //System.out.println("Player 1 - Answer C");
+                                flag = false;
+                                break;
+                            case 'p':
+                                character = 'p';
+                                //System.out.println("Player 1 - Answer D");
+                                flag = false;
+                                break;
+                        }
                     }
                 }
 
@@ -321,8 +392,8 @@ public class GUI extends JFrame{
     }
 
     //public static void StartTimer(){
-        //timer.start();
-   // }
+    //timer.start();
+    // }
     public static void StopTimer(){
         timer.stop();
         JOptionPane.showMessageDialog(frame,
@@ -331,4 +402,50 @@ public class GUI extends JFrame{
                 JOptionPane.WARNING_MESSAGE);
     }
 
+    public static void loadImage(String imageName){
+        String imagePath = "Images/"+imageName+".jpg";
+        /*Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Image img = toolkit.createImage(imagePath);
+        Image.setIcon((Icon) img);*/
+
+        try {
+            BufferedImage img = ImageIO.read(new File(imagePath));
+            //Graphics g =new Graphics
+            //Graphics.drawImage();
+
+            //*
+            ImageIcon icon = new ImageIcon(img);
+            imageLabel.setIcon(icon);
+            //JPanel ImagePanel = new JPanel();
+            //ImagePanel.add(imageLabel);
+            frame.add(imageLabel,BorderLayout.LINE_END);
+            frame.repaint();
+
+            //*/
+
+            //JPanel panel = (JPanel)frame.getContentPane();
+
+
+
+            //JOptionPane.showMessageDialog(null, label);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void unloadImage(){
+        frame.remove(imageLabel);
+    }
+
+    public static void EndGame(){
+        TheRoundTypeLabel.setText("");
+        TheCategoryLabel.setText("The Game Has ended Thank you for playing!");
+        TheQuestionLabel.setText("If you would like to play again please rerun the program");
+        TheUtilityLabel.setText("All of your statistics have been saved.");
+        TheAnswersLabel1.setText("");
+        TheAnswersLabel2.setText("");
+        TheAnswersLabel3.setText("");
+        TheAnswersLabel4.setText("This game is a product of PakPanTeam!");
+    }
 }

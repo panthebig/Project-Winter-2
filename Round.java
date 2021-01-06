@@ -5,8 +5,10 @@ public class  Round{
 
     private  int I,rand;
     private boolean X;
-    public static String[] Rounds = {"Correct Answer","Betting","Stopwatch"};
-    public static String[] Cat = {"Food","Science","Music","Technology","Films"};
+    public static String[] Rounds = {"Correct Answer","Betting","Stopwatch","Thermometer","Fast Answer"};
+    public static String[] Cat = {"Food","Science","Music","Technology","Films","Geography"};//TODO
+    public static int k;
+    public static int TheCurrentRoundType;
 
 
     public Round(){
@@ -22,6 +24,8 @@ public class  Round{
      *         During the round
      */
     public int[] RoundStart(int i,int AmountOfPlayers) { //Trexei o guros tupou i
+
+        TheCurrentRoundType=i;
 
         int[] Stats;
         if(AmountOfPlayers==1){
@@ -45,69 +49,144 @@ public class  Round{
 
         GUI.updateRound(Rounds,i);
 
-        for(I=0;I<4;I++) { //To Game kanei 4 erwthseis gurou i kai tuxaias katigorias
-
-            rand=ThreadLocalRandom.current().nextInt(0, 5);  //[0,4]
+        if(i==1 || i==2 || i==3) {//Correct Answer or Betting or StopWatch
 
 
-            if (i == 1) {
-                System.out.println("And The Category you will be playing this Question is :-\n"+Cat[rand]);
-                X = RoundAnswer();
-                if (X) {
-                    Stats[0] = Stats[0] + 1000;
-                    Stats[1]++;
-                }
-                else{
-                    Stats[1]--;
+            for (I = 0; I < 4; I++) { //To Game kanei 4 erwthseis gurou i kai tuxaias katigorias
+
+                rand = ThreadLocalRandom.current().nextInt(0, 6);  //TODO [0,5...]
+
+                for (k = 0; k < AmountOfPlayers; k++) {
+
+                    if (k == 0) {
+                        System.out.println("Player 1 : ");
+                    } else if (k == 1) {
+                        System.out.println("Player 2 : ");
+                    }
+
+                    if (i == 1) {
+                        System.out.println("And The Category you will be playing this Question is :-\n" + Cat[rand]);
+                        X = RoundAnswer();
+                        if (X) {
+                            Stats[2 * k] = Stats[2 * k] + 1000;
+                            Stats[1 + 2 * k]++;
+                        }
+
+
+                    } else if (i == 2) {
+                        System.out.println("And The Category you will be playing this Question is :-\n" + Cat[rand]);
+
+                        int am = GetBet();
+
+                        X = RoundAnswer();
+                        if (X) {
+                            Stats[2 * k] = Stats[2 * k] + am;
+                            Stats[1 + 2 * k]++;
+                        } else {
+                            Stats[2 * k] = Stats[2 * k] - am;
+                        }
+                    } else if (i == 3) {
+
+                        GUI.StopWatch();
+                        X = RoundAnswer();
+                        GUI.StopTimer();
+
+                        if (X) {
+                            Stats[2 * k] = (int) (Stats[2 * k] + GUI.theTime * 0.2);
+                            Stats[1 + 2 * k]++;
+                        }
+
+                    }
                 }
 
             }
-            else if (i == 2) {
-                System.out.println("And The Category you will be playing this Question is :-\n"+Cat[rand]);
+        }
+        else{//Thermometer or Fast Answer
+            if(i==4) {//Thermometer
 
-                System.out.println("How much Do You want to bet?\n");
+                int counter = 0;
+                int[] ThermometerStats = new int[2];
+                ThermometerStats[0]=0;
+                ThermometerStats[1]=0;
+                while ((ThermometerStats[0] < 5 && ThermometerStats[1] < 5) && counter < 10) {//Runs for 10 questions each so to make sure the programm doesnt run out of questions early on.
+                    for (k = 0; k < 2; k++) {
 
-                //Scanner input = new Scanner(System.in);
-                //int am = input.nextInt();
-                GUI.updateBet();
-                int am=0;
-                boolean flag = true;
-                while (flag){
-                    try {
-                        Thread.sleep(10);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        rand = ThreadLocalRandom.current().nextInt(0, 5);  //[0,4]
+
+                        if (k == 0) {
+                            System.out.println("Player 1 : ");
+                        } else if (k == 1) {
+                            System.out.println("Player 2 : ");
+                        }
+
+                        X = RoundAnswer();
+                        if (X) {
+                            ThermometerStats[k]++;
+                            Stats[1 + 2 * k]++;
+                        }
+
+                        if(ThermometerStats[0] == 5 || ThermometerStats[1] == 5){
+                            break;
+                        }
                     }
-                    am = GUI.TheAmoundofBetting();
-                    if(am != 0){
-                        flag = false;
-                    }
-                }
-                System.out.println("YOUR BET : " + am);
 
-                X = RoundAnswer();
-                if (X) {
-                    Stats[0] = Stats[0] + am;
-                    Stats[1]++;
+                    counter++;
                 }
-                else{
-                    Stats[0] = Stats[0] - am;
-                    Stats[1]--;
+                if (ThermometerStats[0] == 5) {
+                    Stats[0] = Stats[0] + 5000;
+                } else if (ThermometerStats[1] == 5) {
+                    Stats[2] = Stats[2] + 5000;
                 }
+
             }
-            else if(i==3){
+            else{//Fast Answer
+                for(I=0;I<4;I++){
+                    rand = ThreadLocalRandom.current().nextInt(0, 5);  //[0,4]
 
-                GUI.StopWatch();
-                X=RoundAnswer();
-                GUI.StopTimer();
+                    X = RoundAnswer();
+                    System.out.println("---- "+k+" ----");
+                    if(Question.Speed[0].equals("Player1")){//Player1 answered First and Player2 answered Second
+                        if(Question.Speed[1].equals("Correct")){//Player1 answered Correctly
+                            Stats[0] = Stats[0] + 1000;
+                            Stats[1]++;
+                        }
 
-                if(X){
-                    Stats[0] = (int) (Stats[0] + GUI.theTime*0.2);
+
+
+                        if(Question.Speed[3].equals("Correct")){//Player2 answered Correctly
+                            if(Question.Speed[1].equals("Wrong")){
+                                Stats[2] = Stats[2] + 1000;
+                                Stats[3]++;
+                            }
+                            else {
+                                Stats[2] = Stats[2] + 500;
+                                Stats[3]++;
+                            }
+                        }
+
+                    }
+                    else if(Question.Speed[0].equals("Player2")){//Player2 answered First and Player1 answered Second
+                        if(Question.Speed[1].equals("Correct")){//Player2 answered Correctly
+                            Stats[2] = Stats[2] + 1000;
+                            Stats[3]++;
+                        }
+
+                        if(Question.Speed[3].equals("Correct")){//Player1 answered Correctly
+                            if(Question.Speed[1].equals("Wrong")){
+                                Stats[0] = Stats[0] + 1000;
+                                Stats[1]++;
+                            }
+                            else {
+                                Stats[0] = Stats[0] + 500;
+                                Stats[1]++;
+                            }
+                        }
+                    }
                 }
-
             }
 
         }
+
         return Stats;
     }
 
@@ -121,6 +200,26 @@ public class  Round{
 
     }
 
+    public int GetBet(){
+        System.out.println("How much Do You want to bet?\n");
+
+        GUI.updateBet();
+        int am = 0;
+        boolean flag = true;
+        while (flag) {
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            am = GUI.TheAmoundofBetting();
+            if (am != 0) {
+                flag = false;
+            }
+        }
+        System.out.println("YOUR BET : " + am);
+        return am;
+    }
 
 
 }
