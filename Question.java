@@ -8,6 +8,8 @@ import java.util.*;
 public class Question {
     public static int FastestAnswer;
     public static String[] Speed = new String[4];
+    public static int Timer1;
+    public static int Timer2;
 
     public Question(){
 
@@ -61,7 +63,7 @@ public class Question {
         String[] CompleteQestion = Game.getString(randomQuestionIndex);
         String[] KeyBind = {"q","w","e","r"};
         if(cat == "Geography"){
-            System.out.println("random index " +randomQuestionIndex + " start idnex " + categoryStartIndex + " cat end " + categoryEndIndex);
+            //System.out.println("random index " +randomQuestionIndex + " start idnex " + categoryStartIndex + " cat end " + categoryEndIndex);
             GUI.loadImage(CompleteQestion[6]);
         }
 
@@ -69,54 +71,48 @@ public class Question {
 
         GUI.updateQuestion(CompleteQestion);
 
-
         //System.out.println("Question : \n"+CompleteQestion[1]);
         //System.out.println("Answers : \n"+"press q for:"+CompleteQestion[2]+",  "+"press w for:"+CompleteQestion[3]+",  "+"press e for:"+CompleteQestion[4]+",  "+"press r for:"+CompleteQestion[5]);
 
 
-        if(Round.TheCurrentRoundType!=5) {
+        if(Round.k==0) {
 
-            Answer = Character.toString(GUI.getChar());
+                Answer = Character.toString(GUI.getChar());
 
-            if(cat == "Geography"){
-                GUI.unloadImage();
-            }
-            //System.out.println(Answer);
+                if(cat == "Geography"){
+                    GUI.unloadImage();
+                }
 
-            if (Round.k == 0) {
                 if (Answer.equals("q")) {
                     Answer = CompleteQestion[2];
+                    Speed[0]="Player1";
                 } else if (Answer.equals("w")) {
                     Answer = CompleteQestion[3];
+                    Speed[0]="Player1";
                 } else if (Answer.equals("e")) {
                     Answer = CompleteQestion[4];
+                    Speed[0]="Player1";
                 } else if (Answer.equals("r")) {
                     Answer = CompleteQestion[5];
+                    Speed[0]="Player1";
                 }
-            } else if (Round.k == 1) {
-                if (Answer.equals("u")) {
-                    Answer = CompleteQestion[2];
-                } else if (Answer.equals("i")) {
-                    Answer = CompleteQestion[3];
-                } else if (Answer.equals("o")) {
-                    Answer = CompleteQestion[4];
-                } else if (Answer.equals("p")) {
-                    Answer = CompleteQestion[5];
+
+                if (Answer.equals(CompleteQestion[6])) {
+                    System.out.println(Speed[0]+" Answered Correctly\n");
+                    Speed[1]="Correct";
+                    Game.removeString(randomQuestionIndex);
+                    return true;
+                } else {
+                    System.out.println(Speed[0]+" Answered WRONGLY\n");
+                    Speed[1]="Wrong";
+                    Game.removeString(randomQuestionIndex);
+                    return false;
                 }
-            }
 
 
-            if (Answer.equals(CompleteQestion[6])) {
-                System.out.println("CORRECT!!!!!!\n");
-                Game.removeString(randomQuestionIndex);
-                return true;
-            } else {
-                System.out.println("WRONG!!!!!\n");
-                Game.removeString(randomQuestionIndex);
-                return false;
-            }
         }
         else{
+            int initialK=Round.k;
             Round.k=3;
             Answer = Character.toString(GUI.getChar());
 
@@ -150,17 +146,25 @@ public class Question {
 
             System.out.println(Speed[0]);
             if (Answer.equals(CompleteQestion[6])) {
-                System.out.println("The Fastest player Answered Correctly\n");
+                System.out.println(Speed[0]+" Answered Correctly\n");
                 Speed[1]="Correct";
             } else {
-                System.out.println("The Fastest player Answered WRONGLY\n");
+                System.out.println(Speed[0]+" Answered WRONGLY\n");
                 Speed[1]="Wrong";
             }
 
 
             if(Speed[0].equals("Player1")){//if Player1 has the fastest answer then only the Player2 can answer
+                if(Round.TheCurrentRoundType==3){
+                    Timer1=GUI.theTime1;
+                }
+
                 Round.k=1;
                 Answer2 = Character.toString(GUI.getChar());
+
+                if(Round.TheCurrentRoundType==3){
+                    Timer2=GUI.theTime2;
+                }
 
                 if (Answer2.equals("u")) {
                     Answer2 = CompleteQestion[2];
@@ -176,8 +180,16 @@ public class Question {
 
             }
             else {//if Player2 has the fastest answer then only the Player1 can answer
+                if(Round.TheCurrentRoundType==3){
+                    Timer2=GUI.theTime2;
+                }
+
                 Round.k=0;
                 Answer2 = Character.toString(GUI.getChar());
+
+                if(Round.TheCurrentRoundType==3){
+                    Timer1=GUI.theTime1;
+                }
 
                 if (Round.k == 0) {
                     if (Answer2.equals("q")) {
@@ -200,14 +212,16 @@ public class Question {
 
 
             if (Answer2.equals(CompleteQestion[6])) {
-                System.out.println("Second Fastest player Answered Correctly\n");
+                System.out.println(Speed[2]+" Answered Correctly\n");
                 Game.removeString(randomQuestionIndex);
                 Speed[3]="Correct";
+                Round.k=initialK;
                 return true;
             } else {
-                System.out.println("Second Fastest player Answered WRONGLY\n");
+                System.out.println(Speed[2]+" Answered WRONGLY\n");
                 Game.removeString(randomQuestionIndex);
                 Speed[3]="Wrong";
+                Round.k=initialK;
                 return false;
             }
         }

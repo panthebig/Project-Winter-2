@@ -51,7 +51,8 @@ public class GUI extends JFrame{
     private static int NumberOfPlayers;
 
     private static Timer timer;
-    public static int theTime;
+    public static int theTime1=0;
+    public static int theTime2=0;
     private static JLabel imageLabel;
 
     public GUI(){
@@ -430,7 +431,8 @@ public class GUI extends JFrame{
                     count -= 100;
                 }
                 TheUtilityLabel.setText(Integer.toString(count));
-                theTime=count;
+                theTime1=count;
+                theTime2=count;
             }
 
         });

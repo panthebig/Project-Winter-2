@@ -55,7 +55,7 @@ public class Game {
             for(i=0;i<4;i++){
 
                 Round aRound =new Round();
-                RoundPoints=aRound.RoundStart(GetRandomInt(),1);
+                RoundPoints=aRound.RoundStart(3,1);
                 Player1.ScoreCount(RoundPoints);
                 Player1.PrintScore();
             }
@@ -69,7 +69,7 @@ public class Game {
 
             for(i=0;i<4;i++) {
                 Round aRound = new Round();
-                RoundPoints = aRound.RoundStart(GetRandomInt(), 2);
+                RoundPoints = aRound.RoundStart(5, 2);
                 RoundPointsPlayer1[0] = RoundPoints[0];
                 RoundPointsPlayer1[1] = RoundPoints[1];
                 RoundPointsPlayer2[0] = RoundPoints[2];
