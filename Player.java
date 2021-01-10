@@ -4,6 +4,7 @@ public class Player {
     private int HighScore;
 
     /***
+     * A simple constructor.
      * Sets every variable to 0.
      */
     public Player(){

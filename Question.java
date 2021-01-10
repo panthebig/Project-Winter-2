@@ -6,7 +6,6 @@ import java.util.*;
 
 
 public class Question {
-    public static int FastestAnswer;
     public static String[] Speed = new String[4];
     public static int Timer1;
     public static int Timer2;
@@ -15,6 +14,10 @@ public class Question {
 
     }
 
+    /***
+     * ArrayShuffle receives a String Array and makes sure the components in place [2,5] are randomly shuffled
+     * @param Arr basically is a String Array with the Question, possible answers and the correct answer.
+     */
     private void ArrayShuffle(String[] Arr){
         Random rando = ThreadLocalRandom.current();
         for (int i = Arr.length - 2; i > 2; i--)
@@ -30,9 +33,16 @@ public class Question {
 
     /***
      * Picks a random question ,binds each input choice/key with the respective possible answer
-     * And checks weather or not the player(s) answered correctly
+     * And checks weather or not the player(s) answered correctly.
+     * In the case a category with Image Questions is Chosen, the QuestionAndAnswers makes sure to call the respective GUI
+     * method to update the interface making it show the needed Image.
+     * ! Important ! Each question is removed from the current game after it is answered so that the player(s) will not answer it again
+     * More in depth information can be found in the documentation pdf of the program!
      * @param cat represents the category from which the random question will be chosen
      * @return Returns a boolean statement given weather or not the player answered correctly or not
+     * ! Important ! The actual results are saved in the public static array named Speed which is the one used by Round.java
+     * to calculate the points. We could make the QuestionAndAnswer return the Speed array but we thought that returning a
+     * boolean and then using a public static array will be more easily understandable.
      */
     public boolean QuestionsAndAnswer(String cat){
 

@@ -6,7 +6,7 @@ public class  Round{
     private  int I,rand;
     private boolean X;
     public static String[] Rounds = {"Correct Answer","Betting","Stopwatch","Thermometer","Fast Answer"};
-    public static String[] Cat = {"Food","Science","Music","Technology","Films","Geography"};//TODO
+    public static String[] Cat = {"Food","Science","Music","Technology","Films","Geography"};
     public static int k;
     public static int TheCurrentRoundType;
 
@@ -17,7 +17,8 @@ public class  Round{
 
     /***
      * RoundStart is responsible for starting each round ,deciding a random category for each question
-     * And calling the respective function with the question category as parameter.
+     * And calling the respective function with the question category as parameter. RoundStart also makes sure to
+     * update the GUI, having it display the type of the current round!
      * @param i This parameter represents the type of round the player(s) has/have to play for the next 4 questions
      * @param AmountOfPlayers depending on this parameter the method decides which if case to follow
      * @return Returns an integer array which keeps track of the score and questions answered correctly by the player(s)
@@ -301,6 +302,14 @@ public class  Round{
 
     }
 
+    /***
+     * GetBet is responsible for updating the GUI, making it show the player a pop-up window from which the bet will
+     * be chosen. The bet is then stored in the int named am.
+     * Thread.sleep(making each while loop run evrey 10 mSec.) is used here so we make sure the program doesn't crush
+     * from too many times checking for a bet input in case the player takes his time before placing the bet.
+     * !! Important : !! In the case of two players ,player1 chooses his bet first and player2 afterwards!
+     * @return GetBet() returns the int am in which the bet is stored
+     */
     public int GetBet(){
         System.out.println("How much Do You want to bet?");
 

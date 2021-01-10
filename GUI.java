@@ -55,11 +55,16 @@ public class GUI extends JFrame{
     public static int theTime2=0;
     private static JLabel imageLabel;
 
+    /***
+     * This is the Graphical User Interface
+     * GUI makes sure to create each needed component and place it in the correct position before the actual game starts
+     * Later down the Game it is updated (when needed) by separate functions and methods
+     */
     public GUI(){
 
         frame = new JFrame("BuzzQuizWorld!");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(1300,450);
+        frame.setSize(1500,450);
         frame.setVisible(false);
         frame.setLayout(new BorderLayout());
         frame.setFocusable(true);
@@ -173,7 +178,7 @@ public class GUI extends JFrame{
         AnsewrsPanel1.setBackground(Color.lightGray);
         CenterGamePanel.add(AnsewrsPanel1);
 
-        TheAnswersLabel1 = new JLabel("TEST1");
+        TheAnswersLabel1 = new JLabel("");
         AnsewrsPanel1.add(TheAnswersLabel1);
 
         AnsewrsPanel2 = new JPanel();
@@ -181,7 +186,7 @@ public class GUI extends JFrame{
         AnsewrsPanel2.setBackground(Color.lightGray);
         CenterGamePanel.add(AnsewrsPanel2);
 
-        TheAnswersLabel2 = new JLabel("TEST2");
+        TheAnswersLabel2 = new JLabel("");
         AnsewrsPanel2.add(TheAnswersLabel2);
 
         AnsewrsPanel3 = new JPanel();
@@ -189,7 +194,7 @@ public class GUI extends JFrame{
         AnsewrsPanel3.setBackground(Color.lightGray);
         CenterGamePanel.add(AnsewrsPanel3);
 
-        TheAnswersLabel3 = new JLabel("TEST3");
+        TheAnswersLabel3 = new JLabel("");
         AnsewrsPanel3.add(TheAnswersLabel3);
 
         AnsewrsPanel4 = new JPanel();
@@ -197,7 +202,7 @@ public class GUI extends JFrame{
         AnsewrsPanel4.setBackground(Color.lightGray);
         CenterGamePanel.add(AnsewrsPanel4);
 
-        TheAnswersLabel4 = new JLabel("TEST4");
+        TheAnswersLabel4 = new JLabel("");
         AnsewrsPanel4.add(TheAnswersLabel4);
 
         imageLabel = new JLabel();
@@ -209,6 +214,10 @@ public class GUI extends JFrame{
 
     }
 
+    /***
+     * startGUI is basically responsible for making the entire GUI visible to the player(s) and starting the actual game
+     * by creating a Game object and calling the GameStart() method which as the name suggests, starts the game.
+     */
     void startGUI(){
         frame.setVisible(true);
         Game NewGame = new Game();
@@ -216,6 +225,12 @@ public class GUI extends JFrame{
 
     }
 
+    /***
+     * updateRound is responsible for updating the GUI labels that inform the player what type of round he will be playing
+     * for the next 4 questions
+     * @param RoundTypes an array with all the available Round Types
+     * @param CurrentRound an int which shows the current round
+     */
     public static void updateRound(String[] RoundTypes,int CurrentRound){
         CurrentRound=CurrentRound-1;
         CurrentRoundType=CurrentRound;
@@ -242,6 +257,11 @@ public class GUI extends JFrame{
 
     }
 
+    /***
+     * updateBet is used (ONLY in the case the current round type is Betting) to show the player a pop-up window from
+     * which he is able to choose one of the four available bets.
+     * !! The player cannot continue playing unless he/she chooses a bet !!
+     */
     public static void updateBet(){
         if(CurrentRoundType==1){//THIS MEANS THE ROUND IS BETTING
             Object[] TheBet = {"250", "500", "750", "1000"};
@@ -275,6 +295,12 @@ public class GUI extends JFrame{
 
     }
 
+    /***
+     * updateQuestion updates the respective labels of GUI that have to do with the Category of the current Question,
+     * the actual Question and the four possible answers the player(s) has/have to choose from.
+     * The corresponding keys for each answer are also updated on the left-hand side of them
+     * @param Questions
+     */
     public static void updateQuestion(String[] Questions){
         TheCategoryLabel.setText("Category : " + Questions[0]);
         TheQuestionLabel.setText("Question : " + Questions[1]);
@@ -285,15 +311,20 @@ public class GUI extends JFrame{
             TheAnswersLabel4.setText("R : " + Questions[5]);
         }
         else if (Round.k==1){
-            TheAnswersLabel1.setText("U : " + Questions[2]);
-            TheAnswersLabel2.setText("I : " + Questions[3]);
-            TheAnswersLabel3.setText("O : " + Questions[4]);
-            TheAnswersLabel4.setText("P : " + Questions[5]);
+            TheAnswersLabel1.setText("Q / U : " + Questions[2]);
+            TheAnswersLabel2.setText("W / I : " + Questions[3]);
+            TheAnswersLabel3.setText("E / O : " + Questions[4]);
+            TheAnswersLabel4.setText("R / P : " + Questions[5]);
         }
 
 
     }
 
+    /***
+     * getChar is a keyListener which depending on the amount of players or which player can play, accepts each time a
+     * different set of keys.
+     * @return character, which is the actual key that has just been pressed.
+     */
     public static char getChar() {
 
         flag = true;
@@ -408,14 +439,27 @@ public class GUI extends JFrame{
         return character;
     }
 
+    /***
+     * Simple getter for the NumberOfPlayers variable
+     * @return NumberOfPlayers
+     */
     public static int numberOfPlayers(){
         return NumberOfPlayers;
     }
 
+    /***
+     * Simple getter for the TheAmoundofBetting variable
+     * @return GUIBetting
+     */
     public static int TheAmoundofBetting(){
         return GUIBetting;
     }
 
+    /***
+     * StopWatch implements a sort of countdown starting from 5 seconds or 5000 mSec
+     * On each countdown the current remaining time is saved on both theTime1 and theTime2 which represent the remaining
+     * time for player1 and player2 respectively.
+     */
     public  static  void StopWatch(){
         TheUtilityLabel.setText("Starting time : 5 Seconds");
 
@@ -441,9 +485,12 @@ public class GUI extends JFrame{
 
     }
 
-    //public static void StartTimer(){
-    //timer.start();
-    // }
+    /***
+     * Stops the timer.
+     * In the case of one Player the timer stops after he/she answers the question.
+     * In the case of two Players the timer stops after both the players have answered the question.
+     * After the timer has been stopped a pop-up message appears that lets players get ready for the next question.
+     */
     public static void StopTimer(){
         timer.stop();
         JOptionPane.showMessageDialog(frame,
@@ -452,6 +499,10 @@ public class GUI extends JFrame{
                 JOptionPane.WARNING_MESSAGE);
     }
 
+    /***
+     * loadImage is responsible for loading the correct image on the right-hand side of the main frame
+     * @param imageName the actual name of the image without the format (.jpg).
+     */
     public static void loadImage(String imageName){
         String imagePath = "Images/"+imageName+".jpg";
         /*Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -483,14 +534,19 @@ public class GUI extends JFrame{
         }
     }
 
-
+    /***
+     * As the name suggests unloadImage makes sure to take away the image after the corresponding question has been answered
+     */
     public static void unloadImage(){
         frame.remove(imageLabel);
     }
 
+    /***
+     * EndGame is called when the Entire game has ended and updates some labels displaying the messages shown below.
+     */
     public static void EndGame(){
         TheRoundTypeLabel.setText("");
-        TheCategoryLabel.setText("The Game Has ended Thank you for playing!");
+        TheCategoryLabel.setText("The Game Has ended. Thank you for playing!");
         TheQuestionLabel.setText("If you would like to play again please rerun the program");
         TheUtilityLabel.setText("All of your statistics have been saved.");
         TheAnswersLabel1.setText("");

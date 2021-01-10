@@ -55,7 +55,7 @@ public class Game {
             for(i=0;i<4;i++){
 
                 Round aRound =new Round();
-                RoundPoints=aRound.RoundStart(3,1);
+                RoundPoints=aRound.RoundStart(GetRandomInt(),1);
                 Player1.ScoreCount(RoundPoints);
                 Player1.PrintScore();
             }
@@ -69,7 +69,7 @@ public class Game {
 
             for(i=0;i<4;i++) {
                 Round aRound = new Round();
-                RoundPoints = aRound.RoundStart(5, 2);
+                RoundPoints = aRound.RoundStart(GetRandomInt(), 2);
                 RoundPointsPlayer1[0] = RoundPoints[0];
                 RoundPointsPlayer1[1] = RoundPoints[1];
                 RoundPointsPlayer2[0] = RoundPoints[2];
@@ -91,7 +91,8 @@ public class Game {
     }
 
     /***
-     * Calculates a random integer given the lower and upper bounds of the number
+     * Calculates a random integer given the lower and upper bounds of the number, depending on the amount of players
+     * that will be playing.
      * @return randomNum which is the random number
      */
     public int GetRandomInt(){
@@ -107,7 +108,7 @@ public class Game {
 
 
     /***
-     * Opens the file with all the questions,the category of each question,the possible asnwers and the correct asnwer
+     * Opens the file with all the questions,the category of each question,the possible answers and the correct answer
      * And puts them in an Arraylist
      */
     public void TXT(){
